@@ -482,9 +482,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     getDeatail();
     async function getArticle() {
-        const response = await fetch('${window.env.SERVER}/articles/getall');
+        const response = await fetch(`${window.env.SERVER}/articles/getall`);
         const articles = await response.json();
-
         const html = articles.map(article => {
             return `
                 <li class="item_news is-between">
@@ -520,4 +519,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
     getDetailArticle();
+
+    async function getProductThep(){
+        const response = await fetch(`${window.env.SERVER}/products/api/getthep`);
+        const product = await response.json();
+        const thepList = [
+            document.querySelector('.thep-list-1'),
+            document.querySelector('.thep-list-2'),
+        ];
+        let thepChuck = [];
+        for (let i = 0; i < product.length; i += 4) {
+            thepChuck.push(product.slice(i, i + 4));
+        }
+        console.log(`product: ${product}`);
+        thepChuck.forEach(function (chuck, index) {
+            let htmls = chuck.map(function (product) {
+                return `
+                    <li class="item_card">
+                        <a href="/products/${product.slug}" class="wrapper_img">
+                            <img class="fade-in" src=${product.thumbnail_main} alt="">
+                            <i class="bi bi-plus"></i>
+                        </a>
+                        <div class="title_product">
+                            <h3>
+                                <a href="/products/${product.slug}">
+                                    ${product.name}
+                                </a>
+                            </h3>
+                        </div>
+                    </li>`;}).join('');
+            if (thepList[index]) {
+                thepList[index].innerHTML = htmls;
+            }
+            const newImages = document.querySelectorAll('.fade-in');
+            newImages.forEach(img => observer.observe(img));
+        });
+    }
+    getProductThep();
 });

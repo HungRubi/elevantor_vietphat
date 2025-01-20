@@ -8,7 +8,9 @@
     "beautifull": "lint-staged",
     "watch": "sass --watch src/resources/scss/app.scss src/public/css/app.css",
     "watch1": "sass --watch src/resources/scss/reponsive.scss src/public/css/reponsive.css",
-    "start": "nodemon --inspect src/app.js"
+    "start": "nodemon --inspect src/app.js",
+    "build": "sass src/resources/scss/app.scss src/public/css/app.css && sass src/resources/scss/reponsive.scss src/public/css/reponsive.css",
+    "dev": "nodemon --inspect src/app.js"
   },
   "repository": {
     "type": "git",
