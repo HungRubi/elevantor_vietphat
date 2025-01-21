@@ -51,6 +51,7 @@ body{
 a{
     text-decoration: none;
 }
+
 ul,li{
     margin: 0;
     padding: 0;
@@ -330,12 +331,13 @@ ul,li{
         color: #fff;
         padding: 5px 0px 5px 45px;
         border-radius: 8px;
-        border: 1px solid var(--color-main);
+        border: 2px solid var(--color-main);
+        box-shadow: 0 0 15px rgba(47, 144, 74, 0.829);
+
     }
     input:focus {
         outline: none;
         border: 1px solid var(--color-main);
-        box-shadow: 0 0 15px rgba(47, 144, 74, 0.829);
     }
     i{
         color: #fff;
@@ -893,7 +895,6 @@ ul,li{
                     width: 10%;
                     height: 1px;
                     border: 1px solid var(--color-main);
-                    margin: 20px 0;
                 }
             }
             
@@ -932,7 +933,6 @@ ul,li{
                 }
                 .divider{
                     width: 10%;
-                    padding: 20px 0;
                     .line{
                         width: 100%;
                         height: 1px;
@@ -941,7 +941,6 @@ ul,li{
                 }
                 p{
                     text-align: center;
-                    padding: 8px 0;
                     font-size: 16px;
                     line-height: 1.8;
                     display: -webkit-box; /* Sử dụng box layout của Webkit */
@@ -1026,7 +1025,6 @@ ul,li{
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 20px;
             .item_infor{
                 display: flex;
                 align-items: center;
@@ -1223,6 +1221,7 @@ ul,li{
                     }
                     p{
                         margin: 0;
+                        text-align: justify;
                         padding: 8px 0;
                         font-size: 16px;
                         line-height: 1.8;
@@ -1266,6 +1265,9 @@ ul,li{
         }
         .list_suggest_img{
             width: 100%;
+            .arrow_card {
+                margin-top: 10px;
+            }
         }
     }
     footer{
@@ -1384,7 +1386,7 @@ ul,li{
 
 /* name product */
 .title_product{
-    padding: 10px 0 0 0;
+    padding: 10px 0;
     text-align: center;
     a{
         font-size: 17px;
@@ -1395,6 +1397,12 @@ ul,li{
         overflow: hidden; /* Ẩn phần văn bản thừa */
         text-overflow: ellipsis; /* Thêm dấu "..." nếu bị cắt */
         white-space: normal;
+    }
+}
+.wrapper_about, .content_container{
+    .divider{
+        margin-top: 10px;
+        margin-bottom: 20px;
     }
 }
 .arrow_card{
@@ -1467,4 +1475,11 @@ ul,li{
             object-fit: contain;
         }
     }
+}
+.screen_1315{
+    display: none;
+}
+h3{
+    margin: 0px !important;
+    padding: 0px;
 }

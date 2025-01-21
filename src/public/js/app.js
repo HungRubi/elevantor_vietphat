@@ -272,7 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             }
 
-            setInterval(changeSlide, 3000);
+            setInterval(changeSlide, 5000);
 
             slider.scrollTo({ right: 0, behavior: 'smooth' });
         }
@@ -556,4 +556,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
     getProductThep();
+    async function productSuggest() {
+        const response = await fetch(`${window.env.SERVER}/products/api/suggestproduct`);
+        const product = await response.json();
+
+        const html = product.map(pro => {
+            return `
+                <li class="item_card">
+                    <a href="/products/${pro.slug}" class="wrapper_img">
+                        <img src="${pro.thumbnail_main}" alt="">
+                    </a>
+                    <div class="title_product">
+                        <h3>
+                            <a href="/products/${pro.slug}">
+                                ${pro.name}
+                            </a>
+                        </h3>
+                    </div>
+                </li>`;
+        });
+        document.querySelector('.suggest_detail').innerHTML = html.join('');
+    }
+    productSuggest();
 });

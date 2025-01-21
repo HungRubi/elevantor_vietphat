@@ -347,12 +347,12 @@ ul, li {
   color: #fff;
   padding: 5px 0px 5px 45px;
   border-radius: 8px;
-  border: 1px solid var(--color-main);
+  border: 2px solid var(--color-main);
+  box-shadow: 0 0 15px rgba(47, 144, 74, 0.829);
 }
 .search input:focus {
   outline: none;
   border: 1px solid var(--color-main);
-  box-shadow: 0 0 15px rgba(47, 144, 74, 0.829);
 }
 .search i {
   color: #fff;
@@ -897,7 +897,6 @@ ul, li {
   width: 10%;
   height: 1px;
   border: 1px solid var(--color-main);
-  margin: 20px 0;
 }
 .container_web main .btn-contact-us {
   width: 100%;
@@ -934,7 +933,6 @@ ul, li {
 }
 .container_web main .content_container .content .divider {
   width: 10%;
-  padding: 20px 0;
 }
 .container_web main .content_container .content .divider .line {
   width: 100%;
@@ -943,7 +941,6 @@ ul, li {
 }
 .container_web main .content_container .content p {
   text-align: center;
-  padding: 8px 0;
   font-size: 16px;
   line-height: 1.8;
   display: -webkit-box; /* Sử dụng box layout của Webkit */
@@ -1024,7 +1021,6 @@ ul, li {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
 .container_web main .infor_list .item_infor {
   display: flex;
@@ -1220,6 +1216,7 @@ ul, li {
 }
 .container_web main .wrapper_infor_product .detail_infor .display_product p {
   margin: 0;
+  text-align: justify;
   padding: 8px 0;
   font-size: 16px;
   line-height: 1.8;
@@ -1255,6 +1252,9 @@ ul, li {
 }
 .container_web main .list_suggest_img {
   width: 100%;
+}
+.container_web main .list_suggest_img .arrow_card {
+  margin-top: 10px;
 }
 .container_web footer {
   width: 100%;
@@ -1369,7 +1369,7 @@ ul, li {
 
 /* name product */
 .title_product {
-  padding: 10px 0 0 0;
+  padding: 10px 0;
   text-align: center;
 }
 .title_product a {
@@ -1381,6 +1381,11 @@ ul, li {
   overflow: hidden; /* Ẩn phần văn bản thừa */
   text-overflow: ellipsis; /* Thêm dấu "..." nếu bị cắt */
   white-space: normal;
+}
+
+.wrapper_about .divider, .content_container .divider {
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .arrow_card {
@@ -1455,6 +1460,15 @@ ul, li {
 .environment_list .item_environment img {
   width: 100%;
   object-fit: contain;
+}
+
+.screen_1315 {
+  display: none;
+}
+
+h3 {
+  margin: 0px !important;
+  padding: 0px;
 }
 
 /*# sourceMappingURL=app.css.map */
