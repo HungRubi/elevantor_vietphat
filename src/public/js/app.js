@@ -1,5 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const backToTopBtn = document.querySelector('.btn_back_top');
+    console.log(backToTopBtn);
+    window.addEventListener("scroll", () => {
+        const scrollPosition = window.scrollY; 
+        const viewportHeight = window.innerHeight; 
+        const documentHeight = document.documentElement.scrollHeight; 
     
+        if (scrollPosition > viewportHeight && scrollPosition < documentHeight - viewportHeight) {
+            backToTopBtn.classList.add("show");
+        } else {
+            backToTopBtn.classList.remove("show");
+        }
+        backToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth", // Hiệu ứng cuộn mượt
+            });
+        });
+    });
+
     const tabCard = document.querySelectorAll('.list_card_container');
     const btnTabCard = document.querySelectorAll('.tab_item');
 
@@ -14,12 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
             indexSate = index;
         })
     })
-    function starts(){
-        getProductForCop();
-        getProductForDien();
-        getProductForInox();
-    }
-    starts();
     async function getProductForCop() {
         const sategoryProduct = await fetch(`${window.env.SERVER}/products/api/getcop`);
         const product = await sategoryProduct.json();
@@ -133,7 +146,40 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     
     }
-
+    async function getProductThep(){
+        const response = await fetch(`${window.env.SERVER}/products/api/getthep`);
+        const product = await response.json();
+        const thepList = [
+            document.querySelector('.thep-list-1'),
+            document.querySelector('.thep-list-2'),
+        ];
+        let thepChuck = [];
+        for (let i = 0; i < product.length; i += 4) {
+            thepChuck.push(product.slice(i, i + 4));
+        }
+        thepChuck.forEach(function (chuck, index) {
+            let htmls = chuck.map(function (product) {
+                return `
+                    <li class="item_card">
+                        <a href="/products/${product.slug}" class="wrapper_img">
+                            <img class="fade-in" src=${product.thumbnail_main} alt="">
+                            <i class="bi bi-plus"></i>
+                        </a>
+                        <div class="title_product">
+                            <h3>
+                                <a href="/products/${product.slug}">
+                                    ${product.name}
+                                </a>
+                            </h3>
+                        </div>
+                    </li>`;}).join('');
+            if (thepList[index]) {
+                thepList[index].innerHTML = htmls;
+            }
+            const newImages = document.querySelectorAll('.fade-in');
+            newImages.forEach(img => observer.observe(img));
+        });
+    }
     const imgRight = document.querySelectorAll('.animation-right');
     const imgTop = document.querySelectorAll('.animation-top');
     const fadeIn = document.querySelectorAll('.fade-in');
@@ -179,46 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateNavbarBackground();
 
-    function tabActive() {
-        const currentPath = window.location.pathname;
-        
-        if(currentPath === "/") {
-            document.querySelector('.tab-1').classList.add('active');
-            document.querySelector('.tab-2').classList.remove('active');
-            document.querySelector('.tab-3').classList.remove('active');
-            document.querySelector('.tab-4').classList.remove('active');
-            document.querySelector('.tab-5').classList.remove('active');
-        }
-        else if(currentPath.startsWith("/products")) {
-            document.querySelector('.tab-1').classList.remove('active');
-            document.querySelector('.tab-2').classList.add('active');
-            document.querySelector('.tab-3').classList.remove('active');
-            document.querySelector('.tab-4').classList.remove('active');
-            document.querySelector('.tab-5').classList.remove('active');
-        }
-        else if(currentPath.startsWith("/news")) {
-            document.querySelector('.tab-1').classList.remove('active');
-            document.querySelector('.tab-2').classList.remove('active');
-            document.querySelector('.tab-3').classList.add('active');
-            document.querySelector('.tab-4').classList.remove('active');
-            document.querySelector('.tab-5').classList.remove('active');
-        }
-        else if(currentPath.startsWith("/about-us")) {
-            document.querySelector('.tab-1').classList.remove('active');
-            document.querySelector('.tab-2').classList.remove('active');
-            document.querySelector('.tab-3').classList.remove('active');
-            document.querySelector('.tab-4').classList.add('active');
-            document.querySelector('.tab-5').classList.remove('active');
-        }
-        else if(currentPath.startsWith("/contact")) {
-            document.querySelector('.tab-1').classList.remove('active');
-            document.querySelector('.tab-2').classList.remove('active');
-            document.querySelector('.tab-3').classList.remove('active');
-            document.querySelector('.tab-4').classList.remove('active');
-            document.querySelector('.tab-5').classList.add('active');
-        }
-    }
-    tabActive();
+    
     window.addEventListener("popstate", updateNavbarBackground);
 
     const items = document.querySelectorAll(".item_aside");
@@ -340,118 +347,25 @@ document.addEventListener("DOMContentLoaded", () => {
     closeNav.addEventListener('click', () => {
         model.classList.remove('active');
     })
-    const itemsPage = 12;
-    let pageCurrent = 1;
 
-    async function fetchProduct(page, itemsPage) {
-        try{
-            const response = await fetch(`${window.env.SERVER}/products/api/getproductsfe/?page=${page}&limit=${itemsPage}`);
-            if(!response.ok){
-                throw new Error('Không thể lấy dữ liệu từ server');
-            }
-            const data = await response.json();
-            return data;
-        }
-        catch(error){
-            console.log(error);
-        }
+    
+
+
+    
+    const imgDetal = document.querySelector('.wrapper_img_product');
+    const imgModel = document.querySelector('.img_model');
+    const modelImg = document.querySelector('.model_image');
+    const btnCloseModelImg = document.querySelector('.close_img_model');
+    if(imgDetal){
+        imgDetal.addEventListener('click', () => {
+            modelImg.classList.add('active');
+            imgModel.src = imgDetal.querySelector('.img-js-product-main').src;
+        })
+        btnCloseModelImg.addEventListener('click', () => {
+            modelImg.classList.remove('active');
+        })
     }
-
-    async function displayProduct(page){
-        const sategoryProduct = await fetch(`${window.env.SERVER}/products/api/getproductsfe/?page=${page}&limit=${itemsPage}`);
-        const {product, totalItem} = await sategoryProduct.json();
-        const productList = [
-            document.querySelector('.arrow_card_1'),
-            document.querySelector('.arrow_card_2'),
-            document.querySelector('.arrow_card_3'),
-        ];
-        let productChuck = [];
-        for (let i = 0; i < product.length; i += 4) {
-            productChuck.push(product.slice(i, i + 4));
-        }
-        
-        productChuck.forEach(function (chuck, index) {
-            let htmls = chuck.map(function (product) {
-                    return `<li class="item_card">
-                    <a href="/products/${product.slug}" class="wrapper_img">
-                        <img src="${product.thumbnail_main}" alt="">
-                    </a>
-                    <div class="title_product">
-                        <h3>
-                            <a href="#">
-                                ${product.name}
-                            </a>
-                        </h3>
-                    </div>
-                </li>`;
-                })
-                .join('');
-            if (productList[index]) {
-                productList[index].innerHTML = htmls;
-            }
-            const newImages = document.querySelectorAll('.fade-in');
-            newImages.forEach(img => observer.observe(img));
-        });
-        displayPagination(totalItem, itemsPage);
-    }
-
-    function displayPagination(totalItem, itemsPage) {
-        const pageBar = document.querySelector('.page_bar');
-        const totalPage = Math.ceil(totalItem / itemsPage);
-
-        pageBar.innerHTML = `<button class="next previous"> <i class="bi bi-chevron-double-left"></i></button>
-                <button class="next previous"> <i class="bi bi-chevron-left"></i> Previous</button>`;
-        for(let i = 1; i <= totalPage; i++){
-            const button = document.createElement("button");
-            button.className = `number_page ${i === pageCurrent ? "active" : ""}`;
-            button.textContent = i;
-            button.addEventListener("click", async () => {
-                pageCurrent = i;
-                const { product, totalItem } = await fetchProduct(pageCurrent, itemsPage);
-                displayProduct(pageCurrent);
-                displayPagination(totalItem, itemsPage); 
-            });
-            pageBar.appendChild(button);
-        }
-        const nextButton = document.createElement("button");
-        nextButton.className = "next";
-        nextButton.innerHTML = `Next <i class="bi bi-chevron-right"></i>`;
-        nextButton.addEventListener("click", () => {
-            pageCurrent = Math.min(pageCurrent + 1, totalPage); // Điều chỉnh pageCurrent
-            const { product, totalItem } = fetchProduct(pageCurrent, itemsPage);
-            displayProduct(pageCurrent);
-            displayPagination(totalItem, itemsPage);
-        });
-        pageBar.appendChild(nextButton); // Thêm nút next vào pageBar
-
-        const nextAllButton = document.createElement("button");
-        nextAllButton.className = "next_all";
-        nextAllButton.innerHTML = `<i class="bi bi-chevron-double-right"></i>`;
-        pageBar.appendChild(nextAllButton); // Thêm nút next_all vào pageBar
-
-        const currentButton = document.createElement("button");
-        currentButton.className = "current";
-        currentButton.textContent = `Page ${pageCurrent} / ${totalPage}`;
-        pageBar.appendChild(currentButton); // Thêm nút current vào pageBar
-        const btnPrevious = document.querySelectorAll('.previous');
-        if(pageCurrent !== 1){
-            btnPrevious.forEach(btn => {
-                btn.style.display = 'block';
-                btn.addEventListener('click', () => {
-                    pageCurrent = Math.min(pageCurrent - 1, totalPage); // Điều chỉnh pageCurrent
-                    const { product, totalItem } = fetchProduct(pageCurrent, itemsPage);
-                    displayProduct(pageCurrent);
-                    displayPagination(totalItem, itemsPage);
-                })
-            })
-        }else{
-            btnPrevious.forEach(btn => {
-                btn.style.display = 'none';
-            })
-        }
-    }
-    displayProduct(pageCurrent);
-
+    
     async function getDeatail(){
         const slug = window.location.pathname.split('/').pop();
         const detailProduct = await fetch(`${window.env.SERVER}/products/api/getdetailproduct/${slug}`);
@@ -479,8 +393,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.querySelector('.description_product').innerHTML = product.description;
         document.querySelector('.number_stock').innerHTML = `Số lượng tồn kho: ${product.stock}`;
+        const imgDetal = document.querySelector('.img-js-product-main');
+        const modelImg = document.querySelector('.model_image');
+        const btnCloseModelImg = document.querySelector('.close_img_model');
+        imgDetal.addEventListener('click', () => {
+            modelImg.classList.add('active');
+        })
+        btnCloseModelImg.addEventListener('click', () => {
+            modelImg.classList.remove('active');
+        })
     }
-    getDeatail();
     async function getArticle() {
         const response = await fetch(`${window.env.SERVER}/articles/getall`);
         const articles = await response.json();
@@ -504,7 +426,6 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         document.querySelector('.list_news').innerHTML = html.join('');
     }
-    getArticle();
 
     async function getDetailArticle(){
         const slug = window.location.pathname.split('/').pop();
@@ -518,44 +439,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector('.time_news_detail').innerHTML = `Cập nhật lúc: ${article.formatedDate} <br> Người đăng: ${article.author}`;
 
     }
-    getDetailArticle();
-
-    async function getProductThep(){
-        const response = await fetch(`${window.env.SERVER}/products/api/getthep`);
-        const product = await response.json();
-        const thepList = [
-            document.querySelector('.thep-list-1'),
-            document.querySelector('.thep-list-2'),
-        ];
-        let thepChuck = [];
-        for (let i = 0; i < product.length; i += 4) {
-            thepChuck.push(product.slice(i, i + 4));
-        }
-        console.log(`product: ${product}`);
-        thepChuck.forEach(function (chuck, index) {
-            let htmls = chuck.map(function (product) {
-                return `
-                    <li class="item_card">
-                        <a href="/products/${product.slug}" class="wrapper_img">
-                            <img class="fade-in" src=${product.thumbnail_main} alt="">
-                            <i class="bi bi-plus"></i>
-                        </a>
-                        <div class="title_product">
-                            <h3>
-                                <a href="/products/${product.slug}">
-                                    ${product.name}
-                                </a>
-                            </h3>
-                        </div>
-                    </li>`;}).join('');
-            if (thepList[index]) {
-                thepList[index].innerHTML = htmls;
-            }
-            const newImages = document.querySelectorAll('.fade-in');
-            newImages.forEach(img => observer.observe(img));
-        });
-    }
-    getProductThep();
+    
     async function productSuggest() {
         const response = await fetch(`${window.env.SERVER}/products/api/suggestproduct`);
         const product = await response.json();
@@ -577,5 +461,163 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         document.querySelector('.suggest_detail').innerHTML = html.join('');
     }
-    productSuggest();
+    function tabActive() {
+        const currentPath = window.location.pathname;
+        
+        if(currentPath === "/") {
+            document.querySelector('.tab-1').classList.add('active');
+            document.querySelector('.tab-2').classList.remove('active');
+            document.querySelector('.tab-3').classList.remove('active');
+            document.querySelector('.tab-4').classList.remove('active');
+            document.querySelector('.tab-5').classList.remove('active');
+            getProductForCop();
+            getProductForDien();
+            getProductForInox();
+            getProductThep();
+        }
+        else if(currentPath.startsWith("/products")) {
+            document.querySelector('.tab-1').classList.remove('active');
+            document.querySelector('.tab-2').classList.add('active');
+            document.querySelector('.tab-3').classList.remove('active');
+            document.querySelector('.tab-4').classList.remove('active');
+            document.querySelector('.tab-5').classList.remove('active');
+            const itemsPage = 12;
+            let pageCurrent = 1;
+
+            async function fetchProduct(page, itemsPage) {
+                try{
+                    const response = await fetch(`${window.env.SERVER}/products/api/getproductsfe/?page=${page}&limit=${itemsPage}`);
+                    if(!response.ok){
+                        throw new Error('Không thể lấy dữ liệu từ server');
+                    }
+                    const data = await response.json();
+                    return data;
+                }
+                catch(error){
+                    console.log(error);
+                }
+            }
+
+            async function displayProduct(page){
+                const sategoryProduct = await fetch(`${window.env.SERVER}/products/api/getproductsfe/?page=${page}&limit=${itemsPage}`);
+                const {product, totalItem} = await sategoryProduct.json();
+                const productList = [
+                    document.querySelector('.arrow_card_1'),
+                    document.querySelector('.arrow_card_2'),
+                    document.querySelector('.arrow_card_3'),
+                ];
+                let productChuck = [];
+                for (let i = 0; i < product.length; i += 4) {
+                    productChuck.push(product.slice(i, i + 4));
+                }
+                
+                productChuck.forEach(function (chuck, index) {
+                    let htmls = chuck.map(function (product) {
+                            return `<li class="item_card">
+                            <a href="/products/${product.slug}" class="wrapper_img">
+                                <img src="${product.thumbnail_main}" alt="">
+                            </a>
+                            <div class="title_product">
+                                <h3>
+                                    <a href="#">
+                                        ${product.name}
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>`;
+                        })
+                        .join('');
+                    if (productList[index]) {
+                        productList[index].innerHTML = htmls;
+                    }
+                    const newImages = document.querySelectorAll('.fade-in');
+                    newImages.forEach(img => observer.observe(img));
+                });
+                displayPagination(totalItem, itemsPage);
+            }
+
+            function displayPagination(totalItem, itemsPage) {
+                const pageBar = document.querySelector('.page_bar');
+                const totalPage = Math.ceil(totalItem / itemsPage);
+
+                pageBar.innerHTML = `<button class="next previous"> <i class="bi bi-chevron-double-left"></i></button>
+                        <button class="next previous"> <i class="bi bi-chevron-left"></i> Previous</button>`;
+                for(let i = 1; i <= totalPage; i++){
+                    const button = document.createElement("button");
+                    button.className = `number_page ${i === pageCurrent ? "active" : ""}`;
+                    button.textContent = i;
+                    button.addEventListener("click", async () => {
+                        pageCurrent = i;
+                        const { product, totalItem } = await fetchProduct(pageCurrent, itemsPage);
+                        displayProduct(pageCurrent);
+                        displayPagination(totalItem, itemsPage); 
+                    });
+                    pageBar.appendChild(button);
+                }
+                const nextButton = document.createElement("button");
+                nextButton.className = "next";
+                nextButton.innerHTML = `Next <i class="bi bi-chevron-right"></i>`;
+                nextButton.addEventListener("click", () => {
+                    pageCurrent = Math.min(pageCurrent + 1, totalPage); // Điều chỉnh pageCurrent
+                    const { product, totalItem } = fetchProduct(pageCurrent, itemsPage);
+                    displayProduct(pageCurrent);
+                    displayPagination(totalItem, itemsPage);
+                });
+                pageBar.appendChild(nextButton); // Thêm nút next vào pageBar
+
+                const nextAllButton = document.createElement("button");
+                nextAllButton.className = "next_all";
+                nextAllButton.innerHTML = `<i class="bi bi-chevron-double-right"></i>`;
+                pageBar.appendChild(nextAllButton); // Thêm nút next_all vào pageBar
+
+                const currentButton = document.createElement("button");
+                currentButton.className = "current";
+                currentButton.textContent = `Page ${pageCurrent} / ${totalPage}`;
+                pageBar.appendChild(currentButton); // Thêm nút current vào pageBar
+                const btnPrevious = document.querySelectorAll('.previous');
+                if(pageCurrent !== 1){
+                    btnPrevious.forEach(btn => {
+                        btn.style.display = 'block';
+                        btn.addEventListener('click', () => {
+                            pageCurrent = Math.min(pageCurrent - 1, totalPage); // Điều chỉnh pageCurrent
+                            const { product, totalItem } = fetchProduct(pageCurrent, itemsPage);
+                            displayProduct(pageCurrent);
+                            displayPagination(totalItem, itemsPage);
+                        })
+                    })
+                }else{
+                    btnPrevious.forEach(btn => {
+                        btn.style.display = 'none';
+                    })
+                }
+            }
+            displayProduct(pageCurrent);
+            getDeatail();
+            productSuggest();
+        }
+        else if(currentPath.startsWith("/news")) {
+            document.querySelector('.tab-1').classList.remove('active');
+            document.querySelector('.tab-2').classList.remove('active');
+            document.querySelector('.tab-3').classList.add('active');
+            document.querySelector('.tab-4').classList.remove('active');
+            document.querySelector('.tab-5').classList.remove('active');
+            getArticle();
+            getDetailArticle();
+        }
+        else if(currentPath.startsWith("/about-us")) {
+            document.querySelector('.tab-1').classList.remove('active');
+            document.querySelector('.tab-2').classList.remove('active');
+            document.querySelector('.tab-3').classList.remove('active');
+            document.querySelector('.tab-4').classList.add('active');
+            document.querySelector('.tab-5').classList.remove('active');
+        }
+        else if(currentPath.startsWith("/contact")) {
+            document.querySelector('.tab-1').classList.remove('active');
+            document.querySelector('.tab-2').classList.remove('active');
+            document.querySelector('.tab-3').classList.remove('active');
+            document.querySelector('.tab-4').classList.remove('active');
+            document.querySelector('.tab-5').classList.add('active');
+        }
+    }
+    tabActive();
 });
