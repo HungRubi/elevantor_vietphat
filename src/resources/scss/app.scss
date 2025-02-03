@@ -825,7 +825,6 @@ ul,li{
             }
         }
         .wrapper_detail_news{
-            padding: 0 80px;
             margin-top: 30px;
             h3{
                 color: #333;
@@ -842,6 +841,7 @@ ul,li{
                     padding: 8px 0;
                     font-size: 16px;
                     line-height: 1.8;
+                    text-align: justify;
                 }
                 img{
                     width: 100%;
@@ -886,6 +886,7 @@ ul,li{
                         margin: 15px 0 10px 0;
                         font-size: 16px;
                         line-height: 1.8;
+                        text-align: justify;
                         display: -webkit-box; /* Sử dụng box layout của Webkit */
                         -webkit-line-clamp: 5; /* Số dòng tối đa */
                         -webkit-box-orient: vertical; /* Hướng box theo chiều dọc */
@@ -991,6 +992,7 @@ ul,li{
         }
 
         /* contact */
+        
         .name_company{
             font-family: "Poppins,", sans-serif;
             font-weight: 600;
@@ -1079,22 +1081,27 @@ ul,li{
             margin: 15px 0 15px 0;
         }
         .sub_text{
-            margin-top: 15px;
+            margin: 15px 0;
             width: 100%;
             p{
-                text-align: justify;
+                text-align: center;
                 line-height: 1.5;
                 margin: 0;
-                padding: 8px 0;
+                padding: 4px 0;
                 font-size: 16px;
                 font-weight: 500;
                 line-height: 1.8;
+                display: -webkit-box; 
+                -webkit-line-clamp: 3; 
+                -webkit-box-orient: vertical; 
+                overflow: hidden; 
+                text-overflow: ellipsis;
             }
         }
         .wrapper_infor_product{
             position: relative;
             margin-top: 20px;
-            padding: 50px 70px;
+            padding: 50px 0;
             .information_product{
                 display: flex;
                 gap: 30px;
@@ -1313,14 +1320,17 @@ ul,li{
         background: #000;
         padding-top: 20px;
         .company_subscribe{
-            max-width: 80%;
             padding-bottom: 15px;
             border-bottom: 1.5px solid var(--color-main);
-            margin: 0 auto;
             .subscribe_title{
                 text-align: center;
                 font-size: 16px;
                 color: #ffffffc2;
+                display: -webkit-box; 
+                -webkit-line-clamp: 3; 
+                -webkit-box-orient: vertical; 
+                overflow: hidden; 
+                text-overflow: ellipsis;
             }
             .btn-footer{
                 margin-top: 20px;
@@ -1335,18 +1345,18 @@ ul,li{
             }
         }
         .footer_contact_list{
-            width: 85%;
-            margin: 0 auto 15px;
             text-align: center;
             padding-top: 8px;
             ul{
                 width: 100%;
                 .item_address{
-                    width: calc(100% / 3 - 30px);
-                    gap: 30px;
+                    gap: 10px;
                     color: #ffffffa8;
                     i{
                         font-size: 20px;
+                    }
+                    a{
+                        color: rgba(255, 255, 255, 0.76);
                     }
                 }
             }
@@ -1538,4 +1548,17 @@ h3{
 }
 .btn_back_top.show{
     display: flex;
+}
+.wrapper_detail_news .wrapper{
+    margin: 0;
+    padding: 0;
+}
+.contact_layout{
+    h3,h4,h1{
+        display: -webkit-box; 
+        -webkit-line-clamp: 1; 
+        -webkit-box-orient: vertical; 
+        overflow: hidden; 
+        text-overflow: ellipsis;
+    }
 }

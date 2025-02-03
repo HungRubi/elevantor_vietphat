@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
     const backToTopBtn = document.querySelector('.btn_back_top');
-    console.log(backToTopBtn);
     window.addEventListener("scroll", () => {
         const scrollPosition = window.scrollY; 
         const viewportHeight = window.innerHeight; 
@@ -461,6 +460,63 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         document.querySelector('.suggest_detail').innerHTML = html.join('');
     }
+
+    async function getArticleLatest() {
+        const firstInner = document.querySelector('.inner_frist');
+        const secondInner = document.querySelector('.inner_second');
+        const response = await fetch(`${window.env.SERVER}/articles/api/latest`);
+        const listArticle = await response.json();
+        const firstArticle = listArticle[0];
+        const secondArticle = listArticle[1];
+        const htmlFirst = `
+            <div class="img_inner is-center img_artle">
+                <div class="frame_skew ">
+                    <a href="/news/${firstArticle.slug}" class="is-center">
+                        <img src="${firstArticle.thumbnail}" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="text_inner">
+                <div class="item_time">
+                    ${firstArticle.formatedDate}
+                </div>
+                <div class="item_question">
+                    ${firstArticle.subject}
+                </div>
+                <p>
+                    ${firstArticle.content}
+                </p>
+            </div>
+            <div class="img_inner is-center img_inner_frist">
+                <div class="frame_skew ">
+                    <a href="/news/${firstArticle.slug}" class="is-center">
+                        <img src="${firstArticle.thumbnail}" alt="">
+                    </a>
+                </div>
+            </div>`;
+        firstInner.innerHTML = htmlFirst;
+
+        const htmlSecond = `
+            <div class="img_inner is-center">
+                <div class="frame_skew skew_opposite">
+                    <a href="/news/${secondArticle.slug}" class="is-center">
+                        <img src="${secondArticle.thumbnail}" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="text_inner" style="text-align: left;">
+                <div class="item_time">
+                    ${secondArticle.formatedDate}
+                </div>
+                <div class="item_question">
+                    ${secondArticle.subject}
+                </div>
+                <p>
+                    ${secondArticle.content}
+                </p>
+            </div>`;
+        secondInner.innerHTML = htmlSecond;
+    }
     function tabActive() {
         const currentPath = window.location.pathname;
         
@@ -474,6 +530,7 @@ document.addEventListener("DOMContentLoaded", () => {
             getProductForDien();
             getProductForInox();
             getProductThep();
+            getArticleLatest();
         }
         else if(currentPath.startsWith("/products")) {
             document.querySelector('.tab-1').classList.remove('active');
