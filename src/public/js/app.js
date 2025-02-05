@@ -48,13 +48,13 @@ document.addEventListener("DOMContentLoaded", () => {
             let htmls = chuck.map(function (product) {
                     return `
                     <li class="item_card">
-                        <a href="/products/${product.slug}" class="wrapper_img">
+                        <a href="/products/${product.slug}" class="wrapper_img" title="${product.name}">
                             <img class="fade-in" src=${product.thumbnail_main} alt="">
                             <i class="bi bi-plus"></i>
                         </a>
                         <div class="title_product">
                             <h3>
-                                <a href="/products/${product.slug}">
+                                <a href="/products/${product.slug}" title="${product.name}">
                                     ${product.name}
                                 </a>
                             </h3>
@@ -86,13 +86,13 @@ document.addEventListener("DOMContentLoaded", () => {
             let htmls = chuck.map(function (product) {
                     return `
                     <li class="item_card">
-                        <a href="/products/${product.slug}" class="wrapper_img">
+                        <a href="/products/${product.slug}" class="wrapper_img" title="${product.name}">
                             <img class="fade-in" src=${product.thumbnail_main} alt="">
                             <i class="bi bi-plus"></i>
                         </a>
                         <div class="title_product">
                             <h3>
-                                <a href="/products/${product.slug}">
+                                <a href="/products/${product.slug}" title="${product.name}">
                                     ${product.name}
                                 </a>
                             </h3>
@@ -123,13 +123,13 @@ document.addEventListener("DOMContentLoaded", () => {
             let htmls = chuck.map(function (product) {
                     return `
                     <li class="item_card">
-                        <a href="/products/${product.slug}" class="wrapper_img">
+                        <a href="/products/${product.slug}" class="wrapper_img" title="${product.name}">
                             <img class="fade-in" src=${product.thumbnail_main} alt="">
                             <i class="bi bi-plus"></i>
                         </a>
                         <div class="title_product">
                             <h3>
-                                <a href="/products/${product.slug}">
+                                <a href="/products/${product.slug}" title="${product.name}">
                                     ${product.name}
                                 </a>
                             </h3>
@@ -160,13 +160,13 @@ document.addEventListener("DOMContentLoaded", () => {
             let htmls = chuck.map(function (product) {
                 return `
                     <li class="item_card">
-                        <a href="/products/${product.slug}" class="wrapper_img">
+                        <a href="/products/${product.slug}" class="wrapper_img" title="${product.name}">
                             <img class="fade-in" src=${product.thumbnail_main} alt="">
                             <i class="bi bi-plus"></i>
                         </a>
                         <div class="title_product">
                             <h3>
-                                <a href="/products/${product.slug}">
+                                <a href="/products/${product.slug}" title="${product.name}">
                                     ${product.name}
                                 </a>
                             </h3>
@@ -376,9 +376,9 @@ document.addEventListener("DOMContentLoaded", () => {
         thumbnailMain.innerHTML = html;
 
         const listThumbnail = `<li class="img-js-product" ><img  src="${product.thumbnail_main}" alt=""></li>
-                <li class="img-js-product" ><img  src="${product.thumbnail_1}" alt=""></li>
-                <li class="img-js-product" ><img  src="${product.thumbnail_2}" alt=""></li>
-                <li class="img-js-product" ><img  src="${product.thumbnail_3}" alt=""></li>`;
+                <li class="img-js-product" ><img  src="${product.thumbnail_1}" alt="${product.name}"></li>
+                <li class="img-js-product" ><img  src="${product.thumbnail_2}" alt="${product.name}"></li>
+                <li class="img-js-product" ><img  src="${product.thumbnail_3}" alt="${product.name}"></li>`;
         document.querySelector('.wrapper_list_img_product').innerHTML = listThumbnail;
         changeImageProduct();
 
@@ -386,8 +386,8 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector('.sub_heading').innerHTML = product.description;
 
         const iamgeDisplay = `<img src="${product.thumbnail_main}" alt="">
-                <img src="${product.thumbnail_2}" alt="">
-                <img src="${product.thumbnail_3}" alt="">`;
+                <img src="${product.thumbnail_2}" alt="${product.name}">
+                <img src="${product.thumbnail_3}" alt="${product.name}">`;
         document.querySelector('.list_img_detail').innerHTML = iamgeDisplay;
 
         document.querySelector('.description_product').innerHTML = product.description;
@@ -408,18 +408,18 @@ document.addEventListener("DOMContentLoaded", () => {
         const html = articles.map(article => {
             return `
                 <li class="item_news is-between">
-                    <a href="#" class="link_news">
-                        <img src="${article.thumbnail}" alt="">
+                    <a href="/news/${article.slug}" class="link_news" title="${article.subject}">
+                        <img src="${article.thumbnail}" alt="${article.subject}">
                     </a>
                     <div class="content_news">
-                        <a href="/news/${article.slug}" class="heading_title">
+                        <a href="/news/${article.slug}" class="heading_title" title="${article.subject}">
                             ${article.subject}
                         </a>
                         <time>by ${article.author} on ${article.formatedDate}</time>
                         <p>
                             ${article.content}
                         </p>
-                        <a href="/news/${article.slug}" class="read_more">read more</a>
+                        <a href="/news/${article.slug}" class="read_more" title="${article.subject}">read more</a>
                     </div>
                 </li>`;
         })
@@ -432,7 +432,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const article = await response.json();
         document.querySelector('.subject_article_detail').innerHTML = article.subject;
-        document.querySelector('.article_thumbnail_1').innerHTML = `<img src="${article.thumbnail}" alt="">`;
+        document.querySelector('.article_thumbnail_1').innerHTML = `<img src="${article.thumbnail}" alt="${article.name}">`;
         formatContent = article.content.replace(/\n/g, '<br>');
         document.querySelector('.detail_content_new').innerHTML = formatContent;
         document.querySelector('.time_news_detail').innerHTML = `Cập nhật lúc: ${article.formatedDate} <br> Người đăng: ${article.author}`;
@@ -446,12 +446,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const html = product.map(pro => {
             return `
                 <li class="item_card">
-                    <a href="/products/${pro.slug}" class="wrapper_img">
-                        <img src="${pro.thumbnail_main}" alt="">
+                    <a href="/products/${pro.slug}" class="wrapper_img" title="${pro.name}">
+                        <img src="${pro.thumbnail_main}" alt="${pro.name}">
                     </a>
                     <div class="title_product">
                         <h3>
-                            <a href="/products/${pro.slug}">
+                            <a href="/products/${pro.slug}" title="${pro.name}">
                                 ${pro.name}
                             </a>
                         </h3>
@@ -471,8 +471,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const htmlFirst = `
             <div class="img_inner is-center img_artle">
                 <div class="frame_skew ">
-                    <a href="/news/${firstArticle.slug}" class="is-center">
-                        <img src="${firstArticle.thumbnail}" alt="">
+                    <a href="/news/${firstArticle.slug}" class="is-center" title="${firstArticle.name}">
+                        <img src="${firstArticle.thumbnail}" alt="${firstArticle.name}">
                     </a>
                 </div>
             </div>
@@ -489,8 +489,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div class="img_inner is-center img_inner_frist">
                 <div class="frame_skew ">
-                    <a href="/news/${firstArticle.slug}" class="is-center">
-                        <img src="${firstArticle.thumbnail}" alt="">
+                    <a href="/news/${firstArticle.slug}" class="is-center" title="${firstArticle.name}">
+                        <img src="${firstArticle.thumbnail}" alt="${firstArticle.name}">
                     </a>
                 </div>
             </div>`;
@@ -499,8 +499,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const htmlSecond = `
             <div class="img_inner is-center">
                 <div class="frame_skew skew_opposite">
-                    <a href="/news/${secondArticle.slug}" class="is-center">
-                        <img src="${secondArticle.thumbnail}" alt="">
+                    <a href="/news/${secondArticle.slug}" class="is-center" title="${secondArticle.name}">
+                        <img src="${secondArticle.thumbnail}" alt="${secondArticle.name}">
                     </a>
                 </div>
             </div>
@@ -571,12 +571,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 productChuck.forEach(function (chuck, index) {
                     let htmls = chuck.map(function (product) {
                             return `<li class="item_card">
-                            <a href="/products/${product.slug}" class="wrapper_img">
-                                <img src="${product.thumbnail_main}" alt="">
+                            <a href="/products/${product.slug}" class="wrapper_img" title="${product.name}">
+                                <img src="${product.thumbnail_main}" alt="${product.name}">
                             </a>
                             <div class="title_product">
                                 <h3>
-                                    <a href="#">
+                                    <a href="/products/${product.slug}" title="${product.name}">
                                         ${product.name}
                                     </a>
                                 </h3>

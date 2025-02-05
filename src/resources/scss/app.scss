@@ -412,6 +412,29 @@ ul,li{
 .search_mobie.active{
     transform: translateY(0);
 }
+.caller{
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    padding: 5px 50px 5px 10px;                        
+    border-radius: 7px;
+    background: var(--color-main);
+    text-align: left;
+    z-index: 9999;
+    i{
+        font-size: 20px;
+        margin-right: 10px;
+        filter: invert(50%) sepia(100%) saturate(297%) hue-rotate(333deg) brightness(103%) contrast(105%);
+    }
+    .contact_phone{
+        font-size: 13px;
+        color: #fff;
+        span{
+            font-size: 18px;
+            font-weight: 600;
+        }
+    }
+}
 .container_web{
     position: relative;
     width: 100%;
@@ -483,27 +506,6 @@ ul,li{
                     position: relative;
                     padding: 10px 0;
                     text-align: right;
-                    
-                    
-                    .caller{
-                        padding: 5px 50px 5px 10px;                        border-radius: 7px;
-                        background: var(--color-main);
-                        text-align: left;
-                        margin-left: 15px;
-                        i{
-                            font-size: 20px;
-                            margin-right: 10px;
-                            filter: invert(50%) sepia(100%) saturate(297%) hue-rotate(333deg) brightness(103%) contrast(105%);
-                        }
-                        .contact_phone{
-                            font-size: 13px;
-                            color: #fff;
-                            span{
-                                font-size: 18px;
-                                font-weight: 600;
-                            }
-                        }
-                    }
                 }
                 
             }

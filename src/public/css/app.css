@@ -431,6 +431,30 @@ ul, li {
   transform: translateY(0);
 }
 
+.caller {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  padding: 5px 50px 5px 10px;
+  border-radius: 7px;
+  background: var(--color-main);
+  text-align: left;
+  z-index: 9999;
+}
+.caller i {
+  font-size: 20px;
+  margin-right: 10px;
+  filter: invert(50%) sepia(100%) saturate(297%) hue-rotate(333deg) brightness(103%) contrast(105%);
+}
+.caller .contact_phone {
+  font-size: 13px;
+  color: #fff;
+}
+.caller .contact_phone span {
+  font-size: 18px;
+  font-weight: 600;
+}
+
 .container_web {
   position: relative;
   width: 100%;
@@ -502,26 +526,6 @@ ul, li {
   position: relative;
   padding: 10px 0;
   text-align: right;
-}
-.container_web header .header .layout .head_right .caller {
-  padding: 5px 50px 5px 10px;
-  border-radius: 7px;
-  background: var(--color-main);
-  text-align: left;
-  margin-left: 15px;
-}
-.container_web header .header .layout .head_right .caller i {
-  font-size: 20px;
-  margin-right: 10px;
-  filter: invert(50%) sepia(100%) saturate(297%) hue-rotate(333deg) brightness(103%) contrast(105%);
-}
-.container_web header .header .layout .head_right .caller .contact_phone {
-  font-size: 13px;
-  color: #fff;
-}
-.container_web header .header .layout .head_right .caller .contact_phone span {
-  font-size: 18px;
-  font-weight: 600;
 }
 .container_web main {
   width: 100%;

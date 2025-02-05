@@ -191,6 +191,20 @@
   }
 }
 @media screen and (max-width: 803px) {
+  .caller {
+    padding: 0 !important;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    justify-content: center;
+    text-align: center !important;
+  }
+  .caller i {
+    margin-right: 0 !important;
+  }
+  .caller .contact_phone {
+    display: none;
+  }
   .product_tab {
     flex-direction: column !important;
     gap: 5px;
