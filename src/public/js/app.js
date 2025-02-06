@@ -425,18 +425,15 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         document.querySelector('.list_news').innerHTML = html.join('');
     }
-
     async function getDetailArticle(){
         const slug = window.location.pathname.split('/').pop();
         const response = await fetch(`${window.env.SERVER}/articles/getdetail/${slug}`);
-
         const article = await response.json();
         document.querySelector('.subject_article_detail').innerHTML = article.subject;
         document.querySelector('.article_thumbnail_1').innerHTML = `<img src="${article.thumbnail}" alt="${article.name}">`;
         formatContent = article.content.replace(/\n/g, '<br>');
         document.querySelector('.detail_content_new').innerHTML = formatContent;
         document.querySelector('.time_news_detail').innerHTML = `Cập nhật lúc: ${article.formatedDate} <br> Người đăng: ${article.author}`;
-
     }
     
     async function productSuggest() {
