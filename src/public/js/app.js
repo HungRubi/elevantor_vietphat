@@ -371,11 +371,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const product = await detailProduct.json();
 
-        const html = `<img class="img-js-product-main" src="${product.thumbnail_main}" alt="">`;
+        const html = `<img class="img-js-product-main" src="${product.thumbnail_main}" alt="${product.name}">`;
         const thumbnailMain = document.querySelector('.wrapper_img_product');
         thumbnailMain.innerHTML = html;
 
-        const listThumbnail = `<li class="img-js-product" ><img  src="${product.thumbnail_main}" alt=""></li>
+        const listThumbnail = `<li class="img-js-product" ><img  src="${product.thumbnail_main}" alt="${product.name}"></li>
                 <li class="img-js-product" ><img  src="${product.thumbnail_1}" alt="${product.name}"></li>
                 <li class="img-js-product" ><img  src="${product.thumbnail_2}" alt="${product.name}"></li>
                 <li class="img-js-product" ><img  src="${product.thumbnail_3}" alt="${product.name}"></li>`;
@@ -383,7 +383,7 @@ document.addEventListener("DOMContentLoaded", () => {
         changeImageProduct();
 
         document.querySelector('.name_product').innerHTML = product.name;
-        document.querySelector('.sub_heading').innerHTML = product.description;
+        // document.querySelector('.sub_heading').innerHTML = product.description;
 
         const iamgeDisplay = `<img src="${product.thumbnail_main}" alt="">
                 <img src="${product.thumbnail_2}" alt="${product.name}">
@@ -392,6 +392,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.querySelector('.description_product').innerHTML = product.description;
         document.querySelector('.number_stock').innerHTML = `Số lượng tồn kho: ${product.stock}`;
+        document.querySelector('.stock').innerHTML = product.stock;
+        document.querySelector('.price').innerHTML = `${product.price} VNĐ`;
+        const original = product.price * product.sale + product.price;
+        document.querySelector('.original').innerHTML = `${original} VNĐ`;
+        document.querySelector('.discount').innerHTML = `${product.sale} %`;
+        
         const imgDetal = document.querySelector('.img-js-product-main');
         const modelImg = document.querySelector('.model_image');
         const btnCloseModelImg = document.querySelector('.close_img_model');
@@ -468,8 +474,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const htmlFirst = `
             <div class="img_inner is-center img_artle">
                 <div class="frame_skew ">
-                    <a href="/news/${firstArticle.slug}" class="is-center" title="${firstArticle.name}">
-                        <img src="${firstArticle.thumbnail}" alt="${firstArticle.name}">
+                    <a href="/news/${firstArticle.slug}" class="is-center" title="${firstArticle.subject}">
+                        <img src="${firstArticle.thumbnail}" alt="${firstArticle.subject}">
                     </a>
                 </div>
             </div>
@@ -486,8 +492,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div class="img_inner is-center img_inner_frist">
                 <div class="frame_skew ">
-                    <a href="/news/${firstArticle.slug}" class="is-center" title="${firstArticle.name}">
-                        <img src="${firstArticle.thumbnail}" alt="${firstArticle.name}">
+                    <a href="/news/${firstArticle.slug}" class="is-center" title="${firstArticle.subject}">
+                        <img src="${firstArticle.thumbnail}" alt="${firstArticle.subject}">
                     </a>
                 </div>
             </div>`;
@@ -496,8 +502,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const htmlSecond = `
             <div class="img_inner is-center">
                 <div class="frame_skew skew_opposite">
-                    <a href="/news/${secondArticle.slug}" class="is-center" title="${secondArticle.name}">
-                        <img src="${secondArticle.thumbnail}" alt="${secondArticle.name}">
+                    <a href="/news/${secondArticle.slug}" class="is-center" title="${secondArticle.subject}">
+                        <img src="${secondArticle.thumbnail}" alt="${secondArticle.subject}">
                     </a>
                 </div>
             </div>

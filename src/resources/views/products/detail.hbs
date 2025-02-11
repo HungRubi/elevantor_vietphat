@@ -9,9 +9,69 @@
             </ul>
         </div>
         <div class="wrapper_detail_infor">
-            <h3 class="name_product"></h3>
-            <p class="sub_heading"></p>
-            <div class="specifications">
+            <div class="wrapper_name">
+                <div class="love_product">
+                    yêu thích+
+                </div>
+                <h1 class="name_product"></h1>
+            </div>
+            <div class="wrapper_name">
+                <div class="star">
+                    <span style="font-size: 24px;">4.9</span>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                </div>
+                <div class="deliver_height"></div>
+                <div class="comments">
+                    <span style="font-size: 24px; color:#000;">4.6k</span> Đánh giá
+                </div>
+                <div class="deliver_height"></div>
+                <div class="comments">
+                    <span style="font-size: 24px; color:#000;">31.2k</span> Sold
+                </div>
+            </div>
+            <div class="price_product">
+                <span class="price"></span>
+                <span class="original"></span>
+                <div class="discount"></div>
+            </div>
+            <div class="shipping is-center" style="justify-content: start !important;">
+                <h3>Vận chuyển</h3>
+                <div class="voucher_ship is-center" style="justify-content: start !important;">
+                    <div class="icon">
+                        <img alt="shipping entrance icon" class="snjEjZ" src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/productdetailspage/60e525b415f384c57249.svg">
+                    </div>
+                    <div class="sub_title">
+                        <h5>Nhận hàng sau 5 ngày đặt, phí giao 0đ <i class="bi bi-chevron-right"></i><br>
+                            <span>Đặt hàng ngay để nhận được giá sốc</span>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="shipping is-center" style="justify-content: start !important;">
+                <h3>An tâm mua sắm</h3>
+                <div class="voucher_ship is-center" style="justify-content: start !important;">
+                    <div class="icon">
+                        <img alt="service entrance icon" class="bZMSyU" src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/productdetailspage/e3c4dc83fbfcab7b0654.svg">                    </div>
+                    <div class="sub_title">
+                        <h5>Trả hàng miễn phí sau 7 ngày<i class="bi bi-chevron-down"></i><br>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="shipping is-center" style="justify-content: start !important;">
+                <h3>Số lượng</h3>
+                <div class="voucher_ship is-center col_cart" style="justify-content: start !important;">
+                    <button class="btn_number discount_btn is-center">-</button>
+                    <input type="text" value="1">
+                    <button class="btn_number encrease_btn is-center">+</button>
+                </div>
+                <h4 class="d-flex">Số lượng còn lại:<span class="stock"></span></h4>
+            </div>
+            {{!-- <div class="specifications">
                 <div class="specifications_left">
                     <ul class="list_specifications">
                         <li class="items_specifications">
@@ -65,40 +125,233 @@
                     </ul>
 
                 </div>
-            </div>
+            </div> --}}
             <div class="option_products is-center">
                 <button class="option btn-web">
-                    <i class="bi bi-envelope"></i>
-                    send email to us
+                    <i class="bi bi-cart"></i>
+                    thêm vào giỏ hàng
                 </button>
-                <button class="option btn-web">
-                    <i class="bi bi-file-earmark-pdf"></i>
-                    download pdf
+                <button class="btn-web">
+                    Mua ngay
                 </button>
+                <button class="btn-web">
+                    <a href="#contact_now" style="color: white;">
+                        <i class="bi bi-envelope"></i>
+                        gửi mail
+                    </a>
+                </button>
+                
             </div>
         </div>
    </div>
    <div class="detail_infor">
         <div class="heading is-between">
-            <h3>product detail</h3>
+            <h3>Mô tả sản phẩm</h3>
         </div>
         <div class="layout display_product">
             <div class="heading_detail">
-                <h3>Product Display</h3>
+                <h3>Hình ảnh sản phẩm</h3>
             </div>
             <div class="list_img_detail">
                 
             </div>
-            <p class="description_product">The handrail is a customized product, which is customized according to the customer's meter and style. Please confirm the meter carefully. If it is too long or too short, it will not be usable.</p>
-            <p class="number_stock">Multiple colors available, easy customization</p>
+            <p class="description_product"></p>
+            <p class="number_stock"></p>
             <hr>
-            <p style="padding: 0">Previous: <span>OTIS Escalator Step Chain Pitch 135.4mm</span></p>
-            <p style="padding: 0">Next: <span>OTIS Elevator Parts Escalator Chain Pitch 135.7mm</span></p>
+            <p style="padding: 0">Nơi gửi: <span>Hải Phòng - Việt Nam</span></p>
+            <p style="padding: 0">Danh mục: <span>Thiết bị điện</span></p>
             <hr style="padding-top: 100px;">
         </div>
    </div>
 </div>
-<div class="layout">
+<div class="layout wrapper_infor_product" >
+    <div class="detail_infor" style="padding-bottom: 15px; margin-top: 0;">
+        <div class="heading is-between">
+            <h3>Đánh giá sản phẩm</h3>
+        </div>
+        <div class="layout total_comment">
+            <div class="total_star">
+                <div class="title_start">
+                    <span class="star_rated">4.9</span>
+                    <span class="max_star">trên 5</span>
+                </div>
+                <div class="title_start">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                </div>
+            </div>
+            <div class="statistics ">
+                <ul class="is-between">
+                    <li><button class="active">Tất cả</button></li>
+                    <li><button>5 sao (10,7k)</button></li>
+                    <li><button>4 sao (1,7k)</button></li>
+                    <li><button>3 sao (234)</button></li>
+                    <li><button>2 sao (11)</button></li>
+                    <li><button>1 sao (0)</button></li>
+                    <li><button>Có bình luận (6.8k)</button></li>
+                    <li><button>Có hình ảnh (2.8k)</button></li>
+                </ul>
+            </div>
+        </div>
+        <ul class="layout list_comments">
+            <li class="comments">
+                <div class="circle">
+                    <img src="https://www.dropbox.com/scl/fi/wejke33icwbzgcb1xhhv4/2.jpg?rlkey=mi9dylwxime6zkcp4kgu1vlcx&st=0ghf9l3f&dl=1" alt="ảnh đại diện">
+                </div>
+                <div class="detail_comments">
+                    <span>huyhung</span>
+                    <div class="title_start">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="time_comments">
+                        <span class="times_small">12/3/2025 | 12:34 | Phân loại: Linh kiện điện<br></span>
+                            Chất lượng sản phẩm: <span class="review_comment">tốt</span> <br>
+                            Đúng với mô tả: <span class="review_comment">đúng</span>
+                    </div>
+                    <div class="comment_content">
+                        <p>Shop giao hàng nhanh, đóng gói cẩn thận, hàng đúng mô tả</p>
+                    </div>
+                    <div class="list_img_comment">
+                        <div class="comment_img">
+                            <img src="/img/products/1.jpg" alt="ảnh comment">
+                        </div>
+                        <div class="comment_img">
+                            <img src="/img/products/1.jpg" alt="ảnh comment">
+                        </div>
+                        <div class="comment_img">
+                            <img src="/img/products/1.jpg" alt="ảnh comment">
+                        </div>
+                        <div class="comment_img">
+                            <img src="/img/products/1.jpg" alt="ảnh comment">
+                        </div>
+                    </div>
+                    <div class="reply_comment">
+                        <span>Phản hồi từ shop <br></span>
+                        <span class="shop_comment">Cảm ơn đã ủng hộ chúng tôi</span>
+                    </div>
+                    <div class="like_comment is-between">
+                        <div class="like_dev">
+                            <i class="bi bi-hand-thumbs-up-fill"></i> 29
+                        </div>
+                        <i class="bi bi-three-dots-vertical"></i>
+                    </div>
+                </div>
+            </li>
+            <li class="comments">
+                <div class="circle">
+                    <img src="https://www.dropbox.com/scl/fi/wejke33icwbzgcb1xhhv4/2.jpg?rlkey=mi9dylwxime6zkcp4kgu1vlcx&st=0ghf9l3f&dl=1" alt="ảnh đại diện">
+                </div>
+                <div class="detail_comments">
+                    <span>huyhung</span>
+                    <div class="title_start">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="time_comments">
+                        <span class="times_small">12/3/2025 | 12:34 | Phân loại: Linh kiện điện<br></span>
+                            Chất lượng sản phẩm: <span class="review_comment">tốt</span> <br>
+                            Đúng với mô tả: <span class="review_comment">đúng</span>
+                    </div>
+                    <div class="comment_content">
+                        <p>Shop giao hàng nhanh, đóng gói cẩn thận, hàng đúng mô tả</p>
+                    </div>
+                    <div class="list_img_comment">
+                        <div class="comment_img">
+                            <img src="/img/products/1.jpg" alt="ảnh comment">
+                        </div>
+                        <div class="comment_img">
+                            <img src="/img/products/1.jpg" alt="ảnh comment">
+                        </div>
+                        <div class="comment_img">
+                            <img src="/img/products/1.jpg" alt="ảnh comment">
+                        </div>
+                        <div class="comment_img">
+                            <img src="/img/products/1.jpg" alt="ảnh comment">
+                        </div>
+                    </div>
+                    <div class="reply_comment">
+                        <span>Phản hồi từ shop <br></span>
+                        <span class="shop_comment">Cảm ơn đã ủng hộ chúng tôi</span>
+                    </div>
+                    <div class="like_comment is-between">
+                        <div class="like_dev">
+                            <i class="bi bi-hand-thumbs-up-fill"></i> 29
+                        </div>
+                        <i class="bi bi-three-dots-vertical"></i>
+                    </div>
+                </div>
+            </li>
+            <li class="comments">
+                <div class="circle">
+                    <img src="https://www.dropbox.com/scl/fi/wejke33icwbzgcb1xhhv4/2.jpg?rlkey=mi9dylwxime6zkcp4kgu1vlcx&st=0ghf9l3f&dl=1" alt="ảnh đại diện">
+                </div>
+                <div class="detail_comments">
+                    <span>huyhung</span>
+                    <div class="title_start">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="time_comments">
+                        <span class="times_small">12/3/2025 | 12:34 | Phân loại: Linh kiện điện<br></span>
+                            Chất lượng sản phẩm: <span class="review_comment">tốt</span> <br>
+                            Đúng với mô tả: <span class="review_comment">đúng</span>
+                    </div>
+                    <div class="comment_content">
+                        <p>Shop giao hàng nhanh, đóng gói cẩn thận, hàng đúng mô tả</p>
+                    </div>
+                    <div class="list_img_comment">
+                        <div class="comment_img">
+                            <img src="/img/products/1.jpg" alt="ảnh comment">
+                        </div>
+                        <div class="comment_img">
+                            <img src="/img/products/1.jpg" alt="ảnh comment">
+                        </div>
+                        <div class="comment_img">
+                            <img src="/img/products/1.jpg" alt="ảnh comment">
+                        </div>
+                        <div class="comment_img">
+                            <img src="/img/products/1.jpg" alt="ảnh comment">
+                        </div>
+                    </div>
+                    <div class="reply_comment">
+                        <span>Phản hồi từ shop <br></span>
+                        <span class="shop_comment">Cảm ơn đã ủng hộ chúng tôi</span>
+                    </div>
+                    <div class="like_comment is-between">
+                        <div class="like_dev">
+                            <i class="bi bi-hand-thumbs-up-fill"></i> 29
+                        </div>
+                        <i class="bi bi-three-dots-vertical"></i>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="page_bar is-center" style="margin: 0; margin-top: 15px;">
+                    <button class="number_page active">1</button>
+                    <button class="number_page">2</button>
+                    <button class="number_page">3</button>
+                    <button class="next">Next <i class="bi bi-chevron-right"></i></button>
+                    <button class="next_all"><i class="bi bi-chevron-double-right"></i></button>
+                    <button class="current">1/5</button>
+                </div> 
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="layout" id="contact_now">
     <h1 class="title_form">Leave Your Message</h1>
     <form action="" class="form_contact">
         <ul>

@@ -400,7 +400,9 @@ ul, li {
   font-size: 20px;
   position: absolute;
   left: 10px;
-  line-height: 1.6;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 
 .search_mobie {
@@ -469,7 +471,8 @@ ul, li {
 }
 .container_web header {
   width: 100%;
-  z-index: 2;
+  position: relative;
+  z-index: 10000000000000000000000000000000;
   top: 0;
   background: #000;
   left: 0;
@@ -1167,15 +1170,119 @@ ul, li {
   width: 50%;
   max-width: 50%;
 }
-.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor h3 {
+.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .wrapper_name {
+  justify-content: start !important;
+  align-items: center;
+  display: flex;
+}
+.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .wrapper_name .star .bi-star-fill {
+  color: #ee4d2d;
+}
+.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .wrapper_name .deliver_height {
+  height: 30px;
+  width: 1px;
+  border-left: 1px solid var(--border-div);
+  margin: 0 15px;
+}
+.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .wrapper_name .comments {
+  color: #807f7f;
+  text-transform: capitalize;
+}
+.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .shipping {
+  width: 100%;
+  margin: 40px 0;
+}
+.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .shipping h4 {
+  font-size: 17px;
+  color: #888;
+  margin-bottom: 0 !important;
+}
+.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .shipping h3 {
+  color: #757575;
+  flex-shrink: 0;
+  font-size: inherit;
+  font-weight: 400;
+  margin: 0 10px 0 0;
+  text-transform: capitalize;
+  width: 100px;
+}
+.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .shipping .voucher_ship {
+  margin-left: 10px;
+}
+.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .shipping .voucher_ship .sub_title {
+  margin-left: 10px;
+}
+.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .shipping .voucher_ship .sub_title h5 {
+  font-size: 16px !important;
+  margin: 0 !important;
+  color: #222;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .shipping .voucher_ship .sub_title h5 i {
+  margin-left: 5px;
+}
+.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .shipping .voucher_ship .sub_title span {
+  font-size: 14px;
+  color: #888;
+}
+.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .price_product {
+  width: 100%;
+  display: flex;
+  position: relative;
+  background: #fafafa;
+  padding: 15px 20px;
+  align-items: center;
+}
+.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .price_product .price {
+  font-size: 30px;
+  font-weight: 500;
+  color: #2f904b;
+}
+.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .price_product .original {
+  color: #929292;
+  font-size: 16px;
+  margin: 0 10px;
+  -webkit-text-decoration: line-through;
+  text-decoration: line-through;
+}
+.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .price_product .discount {
+  align-items: center;
+  background-color: #e3ffec;
+  border-radius: 2px;
+  color: var(--color-main);
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 700;
+  height: 18px;
+  justify-content: center;
+  padding: 0 4px;
+}
+.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .love_product {
+  padding: 0.1875rem 0.25rem;
+  background: var(--color-main);
+  user-select: none;
+  white-space: nowrap;
+  font-weight: 500;
+  line-height: 1;
+  cursor: default;
+  width: auto;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  text-transform: capitalize;
+  margin-right: 10px;
+}
+.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .name_product {
   font-size: 28px;
   font-weight: 500;
+  margin: 0 !important;
 }
 .container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .sub_heading {
   font-size: 18px;
   font-weight: 500;
 }
-.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor h3, .container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .sub_heading {
+.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .name_product, .container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .sub_heading {
   display: -webkit-box; /* Sử dụng box layout của Webkit */
   -webkit-line-clamp: 2; /* Số dòng tối đa */
   -webkit-box-orient: vertical; /* Hướng box theo chiều dọc */
@@ -1210,7 +1317,12 @@ ul, li {
   margin-top: 80px;
 }
 .container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .option_products .option {
-  border-radius: 8px;
+  background-color: #e3ffec;
+  border: 1px solid var(--color-main);
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.03);
+  color: var(--color-main);
+  outline: 0;
+  font-weight: 500;
 }
 .container_web main .wrapper_infor_product .detail_infor {
   width: 100%;
@@ -1236,7 +1348,6 @@ ul, li {
 }
 .container_web main .wrapper_infor_product .detail_infor .display_product {
   width: 100%;
-  padding: 0 30px;
   margin-top: 70px;
 }
 .container_web main .wrapper_infor_product .detail_infor .display_product .heading_detail {
@@ -1649,18 +1760,19 @@ h3 {
   display: flex;
   align-items: center;
 }
-.wrapper_level .level_right .col_cart, .wrapper_level .level_left .col_cart {
+
+.col_cart {
   width: 25%;
   text-align: center;
 }
-.wrapper_level .level_right .col_cart button, .wrapper_level .level_left .col_cart button {
+.col_cart button {
   width: 30px;
   height: 30px;
   border: 1px solid var(--border-div);
   background: none;
   font-size: 18px;
 }
-.wrapper_level .level_right .col_cart input, .wrapper_level .level_left .col_cart input {
+.col_cart input {
   width: 50px;
   height: 30px;
   border: 1px solid var(--border-div);
@@ -1668,7 +1780,7 @@ h3 {
   border-right: none;
   text-align: center;
 }
-.wrapper_level .level_right .col_cart span i, .wrapper_level .level_left .col_cart span i {
+.col_cart span i {
   color: var(--color-main);
   cursor: pointer;
 }
@@ -1708,6 +1820,182 @@ h3 {
 .voucher_level .icon i {
   transform: scale(1.3);
   color: #ee4d2d;
+}
+
+.header_drop {
+  position: relative;
+}
+.header_drop .contain_drop {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding: 10px;
+  display: none;
+}
+.header_drop .contain_drop .list_drop_header {
+  background: #2f904b;
+  width: 300px;
+}
+.header_drop .contain_drop .list_drop_header li {
+  padding: 1px 10px;
+  display: flex;
+  align-items: center;
+}
+.header_drop .contain_drop .list_drop_header li a {
+  display: block;
+  width: 100%;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.719);
+  font-size: 15px;
+  text-transform: capitalize;
+}
+.header_drop .contain_drop .list_drop_header li .skew {
+  transform: skew(-29deg) translateZ(0);
+  width: 10px;
+  height: 10px;
+  background: white;
+  margin-right: 10px;
+  display: none;
+}
+.header_drop .contain_drop .list_drop_header li:hover .skew {
+  display: block;
+  transition: 0.3s linear;
+}
+.header_drop .contain_drop .list_drop_header li:hover a {
+  transition: 0.3s linear;
+  color: white;
+}
+
+.header_drop:hover .contain_drop {
+  display: block;
+}
+
+.total_comment {
+  align-items: center;
+  background-color: #fffbf8;
+  border: 1px solid #f9ede5;
+  border-radius: 2px;
+  box-sizing: border-box;
+  display: flex;
+  margin-bottom: 1rem;
+  min-height: 5rem;
+  padding: 1.875rem;
+  margin-top: 20px;
+}
+
+.total_star .star_rated {
+  font-size: 1.875rem;
+  color: #ee4d2d;
+  margin-right: 5px;
+}
+.total_star .max_star {
+  color: #ee4d2d;
+  font-size: 1.125rem;
+}
+.total_star .title_start {
+  display: flex;
+  align-items: center;
+}
+.total_star .title_start i {
+  color: #ee4d2d;
+  font-size: 20px;
+}
+
+.statistics {
+  margin-left: 25px;
+}
+.statistics ul {
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.statistics ul li button {
+  padding: 5px 15px;
+  background: none;
+  border: 1px solid var(--border-div);
+  color: #303030;
+}
+.statistics ul li button.active {
+  border: 1px solid #ee4d2d;
+  color: #ee4d2d;
+}
+
+.list_comments .comments {
+  display: flex;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+  padding: 1rem 0 1rem 1.25rem;
+}
+
+.detail_comments {
+  margin-left: 15px;
+  width: 100%;
+}
+.detail_comments i {
+  font-size: 13px;
+  color: #ee4d2d;
+}
+.detail_comments .time_comments {
+  color: #0e0c0c;
+  font-size: 17px;
+}
+.detail_comments .time_comments .times_small {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 0.75rem;
+  margin-bottom: 0.9375rem;
+  margin-top: 0.25rem;
+}
+.detail_comments .time_comments .review_comment {
+  color: rgba(0, 0, 0, 0.87);
+}
+.detail_comments .comment_content {
+  position: relative;
+  box-sizing: border-box;
+  font-size: 17px;
+  color: rgba(0, 0, 0, 0.87);
+  margin: 15px 0;
+}
+.detail_comments .comment_content p {
+  margin-bottom: 0 !important;
+}
+.detail_comments .list_img_comment {
+  width: 100%;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.detail_comments .comment_img {
+  margin-bottom: 15px;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+.detail_comments .comment_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.detail_comments .reply_comment {
+  width: 100%;
+  background: rgba(83, 82, 82, 0.0823529412);
+  padding: 10px 0;
+}
+.detail_comments .reply_comment .shop_comment {
+  color: rgba(0, 0, 0, 0.459);
+}
+.detail_comments .like_comment {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  font-size: 17px;
+}
+.detail_comments .like_comment i {
+  font-size: 20px;
+  cursor: pointer;
+}
+.detail_comments .like_comment .bi-three-dots-vertical {
+  transform: translateX(50%);
 }
 
 /*# sourceMappingURL=app.css.map */
