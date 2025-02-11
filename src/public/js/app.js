@@ -364,7 +364,28 @@ document.addEventListener("DOMContentLoaded", () => {
             modelImg.classList.remove('active');
         })
     }
-    
+    function menuModel() {
+        const divModel = document.querySelectorAll('.model_level_menu');
+        const btnModel = document.querySelectorAll('.btn_level_menu');
+        btnModel.forEach((btn,index) => {
+            btn.addEventListener('click', (event) => {
+                event.stopPropagation();
+                divModel.forEach((div,idx) => {
+                    if(index === idx){
+                        div.classList.toggle('active');
+                    }
+                })
+            })
+        })
+        document.addEventListener('click', (event) => {
+            divModel.forEach((div) => {
+                if (!div.contains(event.target)) {
+                    div.classList.remove('active');
+                }
+            });
+        });
+    }
+    menuModel();
     async function getDeatail(){
         const slug = window.location.pathname.split('/').pop();
         const detailProduct = await fetch(`${window.env.SERVER}/products/api/getdetailproduct/${slug}`);
