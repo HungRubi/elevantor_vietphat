@@ -11,19 +11,208 @@
         <ul>
             <li>
                 <i class="bi bi-bell"></i> thông báo
+                <ul class="dropdown profile_drop">
+                    {{!-- <li class="level_young">cập nhật đơn hàng</li>
+                    <li class="level_young">khuyến mãi</li> --}}
+                </ul>
             </li>
             <li>
-                <i class="bi bi-person"></i> thông tin tài khoản
-                <ul class="dropdown">
-                    <li class="level_young">COP</li>
-                    <li class="level_young">LOP</li>
-                    <li class="level_young">Sạc không dây</li>
-                    <li class="level_young">Elevator smartphone</li>
+                <i class="bi bi-person"></i>thông tin tài khoản
+                <ul class="dropdown profile_drop active">
+                    <li class="level_young active">hồ sơ</li>
+                    <li class="level_young">ngân hàng</li>
+                    <li class="level_young">địa chỉ</li>
+                    <li class="level_young">đổi mật khẩu</li>
                 </ul>
+            </li>
+            <li>
+                <i class="bi bi-receipt"></i>đơn hàng
             </li>
         </ul>
     </aside>
+    <div class="content_profile active">
+        <div class="name_content">
+            <h5>hồ sơ của tôi</h5>
+            <span>Quản lý thông tin hồ sơ để bảo mật tài khoản</span>
+        </div>
+        <div class="infor_user_profile is-center mt-2">
+            <form action="/user/:id/edit?METHOD=PUT">
+                <table>
+                    <tr>
+                        <td class="col_left col-4">Tên đăng nhập</td>
+                        <td class="col-8 col_right">
+                            <div class="input_acc">
+                                <input type="text" name="account" value="huyhung" disabled>
+                                <div class="mt-2">Không thể thay đổi tài khoản</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col_left col-4">Họ & Tên</td>
+                        <td class="col-8 col_right">
+                            <div class="input_acc">
+                                <input type="text" name="name" value="Nguyễn Huy Hùng">
+                             </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col_left col-4">Email</td>
+                        <td class="col-8 col_right">
+                            <div class="input_acc">
+                                <input type="text" name="email" value="hung86391@st.vimaru.edu.vn">
+                             </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col_left col-4">Số điện thoại</td>
+                        <td class="col-8 col_right">
+                            <div class="input_acc">
+                                <input type="text" name="phone" value="0974226659">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col_left col-4">Ngày sinh</td>
+                        <td class="col-8 col_right">
+                            <div class="input_acc">
+                                <input type="date" name="birth">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col_left col-4"> </td>
+                        <td class="col-8 col_right">
+                            <button type="submit" class="btn_save_profile">Lưu</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <div class="change_avatar">
+                <img src="https://www.dropbox.com/scl/fi/wejke33icwbzgcb1xhhv4/2.jpg?rlkey=mi9dylwxime6zkcp4kgu1vlcx&st=0ghf9l3f&dl=1" alt="ảnh đại diện" id="avatar_profile_change">
+                <input type="file" id="inputFile" accept=".jpg, .jpeg, .png" style="display: none;" />
+                <button class="btn_upload">
+                    chọn ảnh
+                </button>
+                <span>Dung lượng file tối đa 1MB<br>
+                    Định dạng: .JPEG, .PNG
+                </span>
+            </div>
+        </div>
+    </div>
     <div class="content_profile">
-
+        <div class="name_content banking_card">
+            <h5>thẻ tín dụng/ghi nợ</h5>
+            <button class="btn btn_add_card_banking">
+                <a href="#">
+                    <i class="bi bi-plus"></i>
+                    thêm thẻ mới
+                </a>
+            </button>
+        </div>
+        <div class="infor_user_profile is-center mt-2 baking_card_content">
+            <div><span>Bạn chưa liên kết thẻ</span></div>
+        </div>
+        <div class="name_content banking_card">
+            <h5>tài khoản ngân hàng của tôi</h5>
+            <button class="btn btn_add_card_banking">
+                <a href="#">
+                    <i class="bi bi-plus"></i>
+                    Thêm tài khoản ngân hàng liên kết
+                </a>
+            </button>
+        </div>
+        <div class="infor_user_profile is-center mt-2 baking_card_content">
+            <div><span>Bạn chưa có tài khoản ngân hàng</span></div>
+        </div>
+    </div>
+    <div class="content_profile">
+        <div class="name_content banking_card">
+            <h5>địa chỉ của tôi</h5>
+            <button class="btn btn_add_card_banking">
+                <a href="#">
+                    <i class="bi bi-plus"></i>
+                    thêm địa chỉ mới mới
+                </a>
+            </button>
+        </div>
+        <div class="infor_user_profile is-between mt-2 address_content">
+            <ul class="list_adress">
+                <li class="item_address is-between">
+                    <div class="address_text">
+                        <div class="infor">
+                            <h5>Huy Hùng<span>(+84) 974 226 659</span>
+                            </h5>
+                        </div>
+                        <address>Số 22, ngõ 263, tổ dân phố 10, phường quán toan, quận hồng bàng, hải phòng</address>
+                        <div class="default_address">
+                            Mặc định
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="operation">
+                <span>Cập nhật</span>
+                <button class="btn btn_operation ">Thiết lập mặc định</button>
+            </div>
+        </div>
+        <div class="infor_user_profile is-between mt-2 address_content">
+            <ul class="list_adress">
+                <li class="item_address is-between">
+                    <div class="address_text">
+                        <div class="infor">
+                            <h5>Huy Hùng<span>(+84) 974 226 659</span>
+                            </h5>
+                        </div>
+                        <address>Số 22, ngõ 263, tổ dân phố 10, phường quán toan, quận hồng bàng, hải phòng</address>
+                    </div>
+                </li>
+            </ul>
+            <div class="operation">
+                <span>Cập nhật | <span>Xóa</span></span>
+                <button class="btn btn_operation ">Thiết lập mặc định</button>
+            </div>
+        </div>
+    </div>
+    <div class="content_profile">
+        <div class="name_content">
+            <h5>Thay đổi mật khẩu</h5>
+            <span>Thay đổi mật khẩu 3 tháng 1 lần để bảo mật</span>
+        </div>
+        <div class="infor_user_profile is-center mt-2">
+            <form action="/user/:id/edit?METHOD=PUT" style="width:100%;">
+                <table>
+                    <tr>
+                        <td class="col_left col-2">Mật khẩu hiện tại</td>
+                        <td class="col-10 col_right">
+                            <div class="input_acc">
+                                <input type="password" name="password" value="">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col_left col-2">Mật khẩu mới</td>
+                        <td class="col-10 col_right">
+                            <div class="input_acc">
+                                <input type="password" name="new_password">
+                             </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col_left col-2">Nhập lại mật khẩu mới</td>
+                        <td class="col-10 col_right">
+                            <div class="input_acc">
+                                <input type="password" name="conform_password">
+                             </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col_left col-2"> </td>
+                        <td class="col-10 col_right">
+                            <button type="submit" class="btn_save_profile">Lưu</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
     </div>
 </div>

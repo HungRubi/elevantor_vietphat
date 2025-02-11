@@ -541,6 +541,52 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>`;
         secondInner.innerHTML = htmlSecond;
     }
+
+    function upLoadImage() {
+        const btnUpload = document.querySelector('.btn_upload');
+        if(btnUpload){
+            btnUpload.addEventListener('click', () => {
+                const inputFile = document.getElementById("inputFile");
+                inputFile.click();
+    
+                inputFile.addEventListener('change', () => {
+                    const file = inputFile.files[0];
+                    if (file) {
+                        const validTypes = ["image/jpeg", "image/png"];
+                        if (validTypes.includes(file.type)) {
+                            renderImage(URL.createObjectURL(file));
+                            inputFile.value = ""; 
+                        } else {
+                            alert("Vui lòng chọn file ảnh hợp lệ (.jpg, .jpeg, .png)!");
+                            inputFile.value = "";
+                        }
+                    }
+                })   
+            })
+        }
+    }
+    function renderImage(src){
+        const wrapper = document.querySelector('#avatar_profile_change');
+        wrapper.src = src
+    }
+    upLoadImage();
+
+    function tabUiProfile() {
+        const asideTab = document.querySelectorAll('.level_young');
+        const tab = document.querySelectorAll('.content_profile');
+
+        asideTab.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                const main = tab[index];
+                document.querySelector('.level_young.active').classList.remove('active');
+                document.querySelector('.content_profile.active').classList.remove('active');
+
+                main.classList.add('active');
+                btn.classList.add('active');
+            })
+        })
+    }
+    tabUiProfile();
     function tabActive() {
         const currentPath = window.location.pathname;
         

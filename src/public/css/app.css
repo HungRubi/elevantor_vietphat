@@ -573,12 +573,14 @@ ul, li {
 
 .layout_user {
   margin-top: 40px;
+  align-items: unset;
 }
 .layout_user aside {
   width: 15%;
   max-width: 20%;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 .layout_user aside .add_user {
   width: 100%;
@@ -630,6 +632,16 @@ ul, li {
 }
 .layout_user aside ul li .level_young {
   padding: 7px 32px;
+  color: #000;
+}
+.layout_user aside ul li .level_young.active {
+  color: var(--color-main);
+}
+.layout_user aside ul li .profile_drop {
+  display: none;
+}
+.layout_user aside ul li .profile_drop.active {
+  display: block;
 }
 .layout_user aside ul li:hover {
   color: var(--color-main);
@@ -637,6 +649,181 @@ ul, li {
 }
 .layout_user .content_profile {
   width: 83%;
+  padding: 0 1.875rem 0.625rem;
+  background: white;
+  display: none;
+}
+.layout_user .content_profile.active {
+  display: block;
+}
+.layout_user .name_content {
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border-div);
+}
+.layout_user .name_content h5 {
+  font-size: 22px;
+  text-transform: capitalize;
+}
+.layout_user .name_content span {
+  font-size: 15px;
+  color: #888;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.layout_user .banking_card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.layout_user .banking_card .btn_add_card_banking {
+  background-color: var(--color-main);
+  border-radius: unset !important;
+}
+.layout_user .banking_card .btn_add_card_banking a {
+  color: rgba(255, 255, 255, 0.836);
+}
+.layout_user .baking_card_content div {
+  margin: 30px 0px;
+  display: block;
+}
+.layout_user .address_content {
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border-div);
+}
+.layout_user .address_content .list_adress {
+  width: 100%;
+}
+.layout_user .address_content .list_adress .item_address {
+  width: 100%;
+}
+.layout_user .address_content .list_adress .item_address .infor {
+  display: flex;
+  align-items: center;
+}
+.layout_user .address_content .list_adress .item_address .infor h5 {
+  font-size: 18px;
+}
+.layout_user .address_content .list_adress .item_address .infor h5 span {
+  font-size: 15px;
+  color: #888;
+  border-left: 1px solid var(--border-div);
+  padding-left: 5px;
+  margin-left: 5px;
+}
+.layout_user .address_content .list_adress .item_address address {
+  max-width: 70%;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.5rem !important;
+}
+.layout_user .address_content .list_adress .item_address .default_address {
+  border: 1px solid var(--color-main);
+  display: block;
+  max-width: 105px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: var(--color-main);
+}
+.layout_user .address_content .operation {
+  text-align: right;
+}
+.layout_user .address_content .operation span {
+  color: rgba(65, 65, 250, 0.938);
+  cursor: pointer;
+}
+.layout_user .address_content .operation .btn_operation {
+  border: 1px solid var(--border-div);
+  border-radius: unset !important;
+  margin-top: 5px;
+}
+.layout_user .infor_user_profile {
+  display: flex;
+  width: 100%;
+}
+.layout_user .infor_user_profile form {
+  width: 70%;
+  margin-top: 15px;
+}
+.layout_user .infor_user_profile form table {
+  width: 100%;
+}
+.layout_user .infor_user_profile form table tr {
+  width: 100%;
+  height: 65px;
+}
+.layout_user .infor_user_profile form table tr .col_left {
+  text-align: right;
+}
+.layout_user .infor_user_profile form table tr .col_right {
+  padding: 0 15px;
+}
+.layout_user .infor_user_profile form table tr .col_right .input_acc {
+  width: 100%;
+}
+.layout_user .infor_user_profile form table tr .col_right .input_acc input {
+  width: 100%;
+  padding: 6px 15px;
+  background: none;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 2px;
+  box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.02);
+  box-sizing: border-box;
+}
+.layout_user .infor_user_profile form table tr .col_right .input_acc div {
+  font-size: 14px;
+  color: #888;
+}
+.layout_user .infor_user_profile form table tr .col_right .btn_save_profile {
+  background: var(--color-main);
+  color: white;
+  border: none;
+  text-transform: uppercase;
+  border-radius: none !important;
+  padding: 7px 15px;
+}
+.layout_user .infor_user_profile .change_avatar {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  border-left: 1px solid var(--border-div);
+}
+.layout_user .infor_user_profile .change_avatar img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.layout_user .infor_user_profile .change_avatar button {
+  border: none;
+  background: var(--color-main);
+  padding: 7px 15px;
+  text-transform: uppercase;
+  color: white;
+}
+.layout_user .infor_user_profile .change_avatar span {
+  color: #888;
+  font-size: 15px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.deliver_height {
+  height: 30px;
+  width: 1px;
+  border-left: 1px solid var(--border-div);
+  margin: 0 15px;
 }
 
 .container_web {
@@ -1296,12 +1483,6 @@ ul, li {
 }
 .container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .wrapper_name .star .bi-star-fill {
   color: #ee4d2d;
-}
-.container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .wrapper_name .deliver_height {
-  height: 30px;
-  width: 1px;
-  border-left: 1px solid var(--border-div);
-  margin: 0 15px;
 }
 .container_web main .wrapper_infor_product .information_product .wrapper_detail_infor .wrapper_name .comments {
   color: #807f7f;
