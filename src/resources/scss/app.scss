@@ -11,6 +11,7 @@
 :root{
     --color-main: #2f904b;
     --bg-main: #f3f3f3;
+    --border-div: #cbd0dd;
 }
 body{
     width: 100%;
@@ -21,6 +22,7 @@ body{
     color: #393939;
     background-color: var(--bg-main);
     line-height: 1.5;
+    background: var(--bg-main);
 }
 
 
@@ -1562,5 +1564,155 @@ h3{
         -webkit-box-orient: vertical; 
         overflow: hidden; 
         text-overflow: ellipsis;
+    }
+}
+
+//Cart
+.header_cart{
+    background: white;
+    width: 100%;
+    padding: 10px 0;
+    position: relative;
+    .level_left{
+        display: flex;
+        align-items: center;
+        max-width: 50%;
+        a{
+            display: block;
+            width: 100px;
+            img{
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+        }
+        .deliver_height{
+            margin: 0 10px;
+            width: 1px;
+            height: 50px;
+            border: 1px solid var(--color-main);
+        }
+        i{
+            font-size: 27px;
+            color: var(--color-main);
+            margin-right: 10px;
+        }
+        h1{
+            color: var(--color-main);
+            font-size: 27px;
+            margin-bottom: 0 !important;
+        }
+    }
+    .level_right{
+        max-width: 50%;
+        width: 50%;
+        form{
+            display: flex;
+            justify-content:end;
+            width: 100%;
+            input{
+                width: 90%;
+                max-width: 90%;
+                border: 2px solid var(--color-main);
+                padding: 7px 5px;
+            }
+            button{
+                padding: 7px 15px;
+                background: var(--color-main);
+                border: none;
+                i{
+                    font-size: 18px;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+.row_cart_header{
+    margin: 20px 0;
+    height: 55px;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .05);
+    color: #888;
+}
+.checkbox_items{
+    width: 50px;
+    input{
+        transform: scale(1.5);
+        color: rgb(46, 46, 48);
+    }
+}
+.wrapper_level{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-div);
+    .level_right,.level_left{
+        width: 50%;
+        max-width: 50%;
+        display: flex;
+        align-items: center;
+        .col_cart{
+            width: 25%;
+            text-align: center;
+            button{
+                width: 30px;
+                height: 30px;
+                border: 1px solid var(--border-div);
+                background: none;
+                font-size: 18px;
+            }
+            input{
+                width: 50px;
+                height: 30px;
+                border: 1px solid var(--border-div);
+                border-left: none;
+                border-right: none;
+                text-align: center;
+            }
+            span{
+                i{
+                    color: var(--color-main);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+.col_name{
+    text-align: left !important;
+    padding: 10px 0;
+    max-width: 40%;
+    img{
+        width: 120px;
+        border: 1px solid var(--border-div);
+        border-radius: 8px;
+    }
+    span{
+        color: rgba(0, 0, 0, .87);
+        display: -webkit-box; 
+        -webkit-line-clamp: 2; 
+        -webkit-box-orient: vertical; 
+        overflow: hidden; 
+        text-overflow: ellipsis;
+        margin: 0 10px;
+        text-align: left;
+        
+    }
+}
+.voucher_level{
+    height: 55px;
+    width: 100%;
+    border-bottom: 1px solid var(--border-div);
+    display: flex;
+    align-items: center;
+    .icon{
+        width: 50px;
+        height: 100%;
+        i{
+            transform: scale(1.3);
+            color: #ee4d2d;
+        }
     }
 }
