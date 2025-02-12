@@ -182,35 +182,37 @@ document.addEventListener("DOMContentLoaded", () => {
     
     window.addEventListener("popstate", updateNavbarBackground);
 
-    const items = document.querySelectorAll(".item_aside");
+    function dropDownAside() {
+        const items = document.querySelectorAll(".item_aside");
 
-    items.forEach(item => {
-        const icon = item.querySelector(".btn_drop");
+        items.forEach(item => {
+            const icon = item.querySelector(".btn_drop");
 
-        icon.addEventListener("click", function (event) {
-            items.forEach(otherItem => {
-                const otherIcon = otherItem.querySelector('.btn_drop');
-                console.log(otherIcon);
-                if (otherItem !== item) {
-                    if (otherIcon) {
-                        otherIcon.classList.add("bi-chevron-up");
-                        otherIcon.classList.remove("bi-chevron-down");
+            icon.addEventListener("click", function (event) {
+                items.forEach(otherItem => {
+                    const otherIcon = otherItem.querySelector('.btn_drop');
+                    console.log(otherIcon);
+                    if (otherItem !== item) {
+                        if (otherIcon) {
+                            otherIcon.classList.add("bi-chevron-up");
+                            otherIcon.classList.remove("bi-chevron-down");
+                        }
+                        otherItem.classList.remove("click");
                     }
-                    otherItem.classList.remove("click");
+                    
+                });
+                if (item.classList.contains("click")) {
+                    icon.classList.add("bi-chevron-up");
+                    icon.classList.remove("bi-chevron-down");
+                } else {
+                    icon.classList.remove("bi-chevron-up");
+                    icon.classList.add("bi-chevron-down");
                 }
-                
+                    
+                item.classList.toggle("click");
             });
-            if (item.classList.contains("click")) {
-                icon.classList.add("bi-chevron-up");
-                icon.classList.remove("bi-chevron-down");
-            } else {
-                icon.classList.remove("bi-chevron-up");
-                icon.classList.add("bi-chevron-down");
-            }
-                
-            item.classList.toggle("click");
         });
-    });
+    }
     async function sliderHome() {
         try{
             const slider = document.querySelector('.slider_banner');
@@ -575,6 +577,23 @@ document.addEventListener("DOMContentLoaded", () => {
             </ul>`;
         })
         document.querySelector('.list_category').innerHTML = html.join('');
+        const htmls = categorys.map(category => {
+            return `
+                <li class="item_aside">
+                    <div class="header_item_aside">
+                        <a href="/products/${category.slug}">${category.name}</a>
+                        <i class="bi bi-chevron-down btn_drop"></i>
+                    </div>
+                    <ul class="dropdown">
+                        <li><a href="#">COP</a></li>
+                        <li><a href="#">LOP</a></li>
+                        <li><a href="#">Sạc không dây</a></li>
+                        <li><a href="#">Elevator smartphone</a></li>
+                    </ul>
+                </li>`;
+        })
+        document.querySelector('.list_aside').innerHTML = htmls.join('');
+        dropDownAside();
     }
     getCategoryProduct();
 
@@ -582,7 +601,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const slug = window.location.pathname.split('/').pop();
         const response = await fetch(`${window.env.SERVER}/category/product/${slug}`);
         const products = await response.json();
-
+        console.log(products);
         const dienList = document.querySelector('.cate-list-1');
         
         let htmls = products.map(function (product) {
