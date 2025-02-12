@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
     const backToTopBtn = document.querySelector('.btn_back_top');
     window.addEventListener("scroll", () => {
@@ -36,148 +37,102 @@ document.addEventListener("DOMContentLoaded", () => {
         const sategoryProduct = await fetch(`${window.env.SERVER}/products/api/getcop`);
         const product = await sategoryProduct.json();
         
-        const copList = [
-            document.querySelector('.cop-list-1'),
-            document.querySelector('.cop-list-2'),
-        ];
-        let copChuck = [];
-        for (let i = 0; i < product.length; i += 4) {
-            copChuck.push(product.slice(i, i + 4));
-        }
-        copChuck.forEach(function (chuck, index) {
-            let htmls = chuck.map(function (product) {
-                    return `
-                    <li class="item_card">
-                        <a href="/products/${product.slug}" class="wrapper_img" title="${product.name}">
-                            <img class="fade-in" src=${product.thumbnail_main} alt="">
-                            <i class="bi bi-plus"></i>
+        const copList =  document.querySelector('.cop-list-1');
+        
+        const htmls = product.map(function (pro) {
+            return `
+            <li class="item_card">
+                <a href="/products/detail/${pro.slug}" class="wrapper_img" title="${pro.name}">
+                    <img class="fade-in" src=${pro.thumbnail_main} alt="">
+                    <i class="bi bi-plus"></i>
+                </a>
+                <div class="title_product">
+                    <h3>
+                        <a href="/products/detail/${pro.slug}" title="${pro.name}">
+                            ${pro.name}
                         </a>
-                        <div class="title_product">
-                            <h3>
-                                <a href="/products/${product.slug}" title="${product.name}">
-                                    ${product.name}
-                                </a>
-                            </h3>
-                        </div>
-                    </li>`;
-                })
-                .join('');
-            if (copList[index]) {
-                copList[index].innerHTML = htmls;
-            }
-            const newImages = document.querySelectorAll('.fade-in');
-            newImages.forEach(img => observer.observe(img));
-        });
-    
+                    </h3>
+                </div>
+            </li>`;
+        })
+        copList.innerHTML = htmls.join('');
+        const newImages = document.querySelectorAll('.fade-in');
+        newImages.forEach(img => observer.observe(img));
+            
     }
     async function getProductForDien() {
         const sategoryProduct = await fetch(`${window.env.SERVER}/products/api/getdien`);
         const product = await sategoryProduct.json();
         
-        const dienList = [
-            document.querySelector('.dien-list-1'),
-            document.querySelector('.dien-list-2'),
-        ];
-        let dienChuck = [];
-        for (let i = 0; i < product.length; i += 4) {
-            dienChuck.push(product.slice(i, i + 4));
-        }
-        dienChuck.forEach(function (chuck, index) {
-            let htmls = chuck.map(function (product) {
-                    return `
-                    <li class="item_card">
-                        <a href="/products/${product.slug}" class="wrapper_img" title="${product.name}">
-                            <img class="fade-in" src=${product.thumbnail_main} alt="">
-                            <i class="bi bi-plus"></i>
+        const dienList = document.querySelector('.dien-list-1');
+        const htmls = product.map(function (pro) {
+            return `
+            <li class="item_card">
+                <a href="/products/detail/${pro.slug}" class="wrapper_img" title="${pro.name}">
+                    <img class="fade-in" src=${pro.thumbnail_main} alt="">
+                    <i class="bi bi-plus"></i>
+                </a>
+                <div class="title_product">
+                    <h3>
+                        <a href="/products/detail/${pro.slug}" title="${pro.name}">
+                            ${pro.name}
                         </a>
-                        <div class="title_product">
-                            <h3>
-                                <a href="/products/${product.slug}" title="${product.name}">
-                                    ${product.name}
-                                </a>
-                            </h3>
-                        </div>
-                    </li>`;
-                })
-                .join('');
-            if (dienList[index]) {
-                dienList[index].innerHTML = htmls;
-            }
-            const newImages = document.querySelectorAll('.fade-in');
-            newImages.forEach(img => observer.observe(img));
-        });
-    
+                    </h3>
+                </div>
+            </li>`;
+        })
+        dienList.innerHTML = htmls.join('');
+        const newImages = document.querySelectorAll('.fade-in');
+        newImages.forEach(img => observer.observe(img));
     }
     async function getProductForInox() {
         const sategoryProduct = await fetch(`${window.env.SERVER}/products/api/getinox`);
         const product = await sategoryProduct.json();
-        const inoxList = [
-            document.querySelector('.inox-list-1'),
-            document.querySelector('.inox-list-2'),
-        ];
-        let inoxChuck = [];
-        for (let i = 0; i < product.length; i += 4) {
-            inoxChuck.push(product.slice(i, i + 4));
-        }
-        inoxChuck.forEach(function (chuck, index) {
-            let htmls = chuck.map(function (product) {
-                    return `
-                    <li class="item_card">
-                        <a href="/products/${product.slug}" class="wrapper_img" title="${product.name}">
-                            <img class="fade-in" src=${product.thumbnail_main} alt="">
-                            <i class="bi bi-plus"></i>
+        
+        const dienList = document.querySelector('.inox-list-1');
+        const htmls = product.map(function (pro) {
+            return `
+            <li class="item_card">
+                <a href="/products/detail/${pro.slug}" class="wrapper_img" title="${pro.name}">
+                    <img class="fade-in" src=${pro.thumbnail_main} alt="">
+                    <i class="bi bi-plus"></i>
+                </a>
+                <div class="title_product">
+                    <h3>
+                        <a href="/products/detail/${pro.slug}" title="${pro.name}">
+                            ${pro.name}
                         </a>
-                        <div class="title_product">
-                            <h3>
-                                <a href="/products/${product.slug}" title="${product.name}">
-                                    ${product.name}
-                                </a>
-                            </h3>
-                        </div>
-                    </li>`;
-                })
-                .join('');
-            if (inoxList[index]) {
-                inoxList[index].innerHTML = htmls;
-            }
-            const newImages = document.querySelectorAll('.fade-in');
-            newImages.forEach(img => observer.observe(img));
-        });
-    
+                    </h3>
+                </div>
+            </li>`;
+        })
+        dienList.innerHTML = htmls.join('');
+        const newImages = document.querySelectorAll('.fade-in');
+        newImages.forEach(img => observer.observe(img));
     }
     async function getProductThep(){
         const response = await fetch(`${window.env.SERVER}/products/api/getthep`);
         const product = await response.json();
-        const thepList = [
-            document.querySelector('.thep-list-1'),
-            document.querySelector('.thep-list-2'),
-        ];
-        let thepChuck = [];
-        for (let i = 0; i < product.length; i += 4) {
-            thepChuck.push(product.slice(i, i + 4));
-        }
-        thepChuck.forEach(function (chuck, index) {
-            let htmls = chuck.map(function (product) {
-                return `
-                    <li class="item_card">
-                        <a href="/products/${product.slug}" class="wrapper_img" title="${product.name}">
-                            <img class="fade-in" src=${product.thumbnail_main} alt="">
-                            <i class="bi bi-plus"></i>
+        const dienList = document.querySelector('.thep-list-1');
+        const htmls = product.map(function (pro) {
+            return `
+            <li class="item_card">
+                <a href="/products/detail/${pro.slug}" class="wrapper_img" title="${pro.name}">
+                    <img class="fade-in" src=${pro.thumbnail_main} alt="">
+                    <i class="bi bi-plus"></i>
+                </a>
+                <div class="title_product">
+                    <h3>
+                        <a href="/products/detail/${pro.slug}" title="${pro.name}">
+                            ${pro.name}
                         </a>
-                        <div class="title_product">
-                            <h3>
-                                <a href="/products/${product.slug}" title="${product.name}">
-                                    ${product.name}
-                                </a>
-                            </h3>
-                        </div>
-                    </li>`;}).join('');
-            if (thepList[index]) {
-                thepList[index].innerHTML = htmls;
-            }
-            const newImages = document.querySelectorAll('.fade-in');
-            newImages.forEach(img => observer.observe(img));
-        });
+                    </h3>
+                </div>
+            </li>`;
+        })
+        dienList.innerHTML = htmls.join('');
+        const newImages = document.querySelectorAll('.fade-in');
+        newImages.forEach(img => observer.observe(img));
     }
     const imgRight = document.querySelectorAll('.animation-right');
     const imgTop = document.querySelectorAll('.animation-top');
@@ -256,7 +211,6 @@ document.addEventListener("DOMContentLoaded", () => {
             item.classList.toggle("click");
         });
     });
-
     async function sliderHome() {
         try{
             const slider = document.querySelector('.slider_banner');
@@ -606,6 +560,54 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     tabUiOrder();
+
+    async function getCategoryProduct() {
+        const response = await fetch(`${window.env.SERVER}/category/product/all`);
+        const categorys = await response.json();
+
+        const html = categorys.map(category => {
+            return `
+            <ul class="list_drop_header">
+                <li>
+                    <div class="skew"></div>
+                    <a href="/products/${category.slug}" title="${category.name}">${category.name}</a>
+                </li>
+            </ul>`;
+        })
+        document.querySelector('.list_category').innerHTML = html.join('');
+    }
+    getCategoryProduct();
+
+    async function getProductForCategory() {
+        const slug = window.location.pathname.split('/').pop();
+        const response = await fetch(`${window.env.SERVER}/category/product/${slug}`);
+        const products = await response.json();
+
+        const dienList = document.querySelector('.cate-list-1');
+        
+        let htmls = products.map(function (product) {
+            return `
+            <li class="item_card">
+                <a href="/products/detail/${product.slug}" class="wrapper_img" title="${product.name}">
+                    <img class="fade-in" src=${product.thumbnail_main} alt="">
+                    <i class="bi bi-plus"></i>
+                </a>
+                <div class="title_product">
+                    <h3>
+                        <a href="/products/detail/${product.slug}" title="${product.name}">
+                            ${product.name}
+                        </a>
+                    </h3>
+                </div>
+            </li>`;
+        })
+        if(dienList){
+            dienList.innerHTML = htmls.join('');
+        }
+        const newImages = document.querySelectorAll('.fade-in');
+        newImages.forEach(img => observer.observe(img));
+    }
+
     function tabActive() {
         const currentPath = window.location.pathname;
         
@@ -645,40 +647,28 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             async function displayProduct(page){
-                const sategoryProduct = await fetch(`${window.env.SERVER}/products/api/getproductsfe/?page=${page}&limit=${itemsPage}`);
-                const {product, totalItem} = await sategoryProduct.json();
-                const productList = [
-                    document.querySelector('.arrow_card_1'),
-                    document.querySelector('.arrow_card_2'),
-                    document.querySelector('.arrow_card_3'),
-                ];
-                let productChuck = [];
-                for (let i = 0; i < product.length; i += 4) {
-                    productChuck.push(product.slice(i, i + 4));
-                }
-                
-                productChuck.forEach(function (chuck, index) {
-                    let htmls = chuck.map(function (product) {
-                            return `<li class="item_card">
-                            <a href="/products/${product.slug}" class="wrapper_img" title="${product.name}">
-                                <img src="${product.thumbnail_main}" alt="${product.name}">
+                const response = await fetch(`${window.env.SERVER}/products/api/getproductsfe/?page=${page}&limit=${itemsPage}`);
+                const {product, totalItem} = await response.json();
+                const productList = document.querySelector('.arrow_card_1');
+                const html = product.map(pro => {
+                    return `
+                        <li class="item_card">
+                            <a href="/products/detail/${pro.slug}" class="wrapper_img" title="${pro.name}">
+                                <img src="${pro.thumbnail_main}" alt="${pro.name}">
                             </a>
                             <div class="title_product">
                                 <h3>
-                                    <a href="/products/${product.slug}" title="${product.name}">
-                                        ${product.name}
+                                    <a href="/products/detail/${pro.slug}" title="${pro.name}">
+                                        ${pro.name}
                                     </a>
                                 </h3>
                             </div>
-                        </li>`;
-                        })
-                        .join('');
-                    if (productList[index]) {
-                        productList[index].innerHTML = htmls;
-                    }
-                    const newImages = document.querySelectorAll('.fade-in');
-                    newImages.forEach(img => observer.observe(img));
-                });
+                        </li>
+                    `
+                })
+                productList.innerHTML = html.join('');
+                const newImages = document.querySelectorAll('.fade-in');
+                newImages.forEach(img => observer.observe(img));
                 displayPagination(totalItem, itemsPage);
             }
 
@@ -740,6 +730,7 @@ document.addEventListener("DOMContentLoaded", () => {
             displayProduct(pageCurrent);
             getDeatail();
             productSuggest();
+            getProductForCategory();
         }
         else if(currentPath.startsWith("/news")) {
             document.querySelector('.tab-1').classList.remove('active');

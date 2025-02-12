@@ -1181,6 +1181,9 @@ ul,li{
             margin-top: 80px;
             .product_tab{
                 padding-bottom: 20px;
+                gap: 20px;
+                display: flex;
+                align-items: center;
                 .tab_item{
                     width: calc(100% / 4 - 20px);
                     background: #000;
@@ -2149,7 +2152,10 @@ ul,li{
     }
 }
 .arrow_card{
+    display: flex;
+    align-items: center;
     gap: 20px;
+    flex-wrap: wrap;
     .item_card{
         width: calc(100% / 4 - 20px);
         .wrapper_img{

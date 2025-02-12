@@ -6,5 +6,9 @@ class ProductsController{
     detail(req, res, next) {
         res.render('products/detail')
     }
+
+    getCategory(req, res, next) {
+        res.render('products/categoryProduct')
+    }
 }
 module.exports = new ProductsController();

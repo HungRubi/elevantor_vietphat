@@ -1197,6 +1197,9 @@ ul, li {
 }
 .container_web main .index_product .product_tab {
   padding-bottom: 20px;
+  gap: 20px;
+  display: flex;
+  align-items: center;
 }
 .container_web main .index_product .product_tab .tab_item {
   width: calc(25% - 20px);
@@ -2135,7 +2138,10 @@ ul, li {
 }
 
 .arrow_card {
+  display: flex;
+  align-items: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 .arrow_card .item_card {
   width: calc(25% - 20px);
