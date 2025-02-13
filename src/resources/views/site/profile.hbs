@@ -1,9 +1,9 @@
 <div class="layout is-between layout_user">
     <aside>
         <div class="add_user">
-            <img src="https://www.dropbox.com/scl/fi/wejke33icwbzgcb1xhhv4/2.jpg?rlkey=mi9dylwxime6zkcp4kgu1vlcx&st=0ghf9l3f&dl=1" alt="Ảnh đại diện">
+            <img class="avatar_user" src="https://www.dropbox.com/scl/fi/wejke33icwbzgcb1xhhv4/2.jpg?rlkey=mi9dylwxime6zkcp4kgu1vlcx&st=0ghf9l3f&dl=1" alt="Ảnh đại diện">
             <div class="infor">
-                <h5>huyhung</h5>
+                <h5 id="account_user"></h5>
                 <span><i class="bi bi-pencil"></i>Sửa hồ sơ</span>
             </div>
         </div>
@@ -35,59 +35,11 @@
             <span>Quản lý thông tin hồ sơ để bảo mật tài khoản</span>
         </div>
         <div class="infor_user_profile is-center mt-2">
-            <form action="/user/:id/edit?METHOD=PUT">
-                <table>
-                    <tr>
-                        <td class="col_left col-4">Tên đăng nhập</td>
-                        <td class="col-8 col_right">
-                            <div class="input_acc">
-                                <input type="text" name="account" value="huyhung" disabled>
-                                <div class="mt-2">Không thể thay đổi tài khoản</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col_left col-4">Họ & Tên</td>
-                        <td class="col-8 col_right">
-                            <div class="input_acc">
-                                <input type="text" name="name" value="Nguyễn Huy Hùng">
-                             </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col_left col-4">Email</td>
-                        <td class="col-8 col_right">
-                            <div class="input_acc">
-                                <input type="text" name="email" value="hung86391@st.vimaru.edu.vn">
-                             </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col_left col-4">Số điện thoại</td>
-                        <td class="col-8 col_right">
-                            <div class="input_acc">
-                                <input type="text" name="phone" value="0974226659">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col_left col-4">Ngày sinh</td>
-                        <td class="col-8 col_right">
-                            <div class="input_acc">
-                                <input type="date" name="birth">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col_left col-4"> </td>
-                        <td class="col-8 col_right">
-                            <button type="submit" class="btn_save_profile">Lưu</button>
-                        </td>
-                    </tr>
-                </table>
+            <form action="/user/:id/edit?METHOD=PUT" id="form_infor_user">
+                
             </form>
             <div class="change_avatar">
-                <img src="https://www.dropbox.com/scl/fi/wejke33icwbzgcb1xhhv4/2.jpg?rlkey=mi9dylwxime6zkcp4kgu1vlcx&st=0ghf9l3f&dl=1" alt="ảnh đại diện" id="avatar_profile_change">
+                <img class="avatar_user" src="" alt="ảnh đại diện" id="avatar_profile_change">
                 <input type="file" id="inputFile" accept=".jpg, .jpeg, .png" style="display: none;" />
                 <button class="btn_upload">
                     chọn ảnh

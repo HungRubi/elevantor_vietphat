@@ -626,7 +626,130 @@ document.addEventListener("DOMContentLoaded", () => {
         const newImages = document.querySelectorAll('.fade-in');
         newImages.forEach(img => observer.observe(img));
     }
+    async function userSession() {
+        try{
+            const response = await fetch(`${window.env.SERVER}/login/profile`,{
+                method: "GET",
+                credentials: "include",
+            });
+            const data = await response.json();
+            if (response.ok) {
+                const html = `
+                    <div class="infor_user">
+                        <img src="${data.user.avatar}" alt="ảnh đại diện">
+                        <h5>${data.user.name}</h5>
+                    </div>
+                    <div class="deliver"></div>
+                    <ul class="list_option">
+                        <li class="option">
+                            <a href="/profile" class="is-center">
+                                <i class="bi bi-person"></i>Tài khoản
+                            </a>
+                        </li>
+                        <li class="option">
+                            <a href="/order" class="is-center">
+                                <i class="bi bi-truck"></i>Đơn hàng 
+                            </a>
+                        </li>
+                        <li class="option">
+                            <a href="/voucher" class="is-center">
+                                <i class="bi bi-tag"></i>Voucher
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="deliver"></div>
+                    <div class="log_out">
+                        <button class="button_log_out is-center">
+                            <a href="/logout">
+                                <i class="bi bi-arrow-bar-right"></i>
+                                Đăng xuất
+                            </a>
+                        </button>
+                    </div>`;
+                document.querySelector('.model_user_menu').innerHTML = html;
+                document.querySelectorAll('.avatar_user').forEach(img => {
+                    img.src = data.user.avatar;
+                })
+                document.querySelector('#account_user').innerHTML = data.user.account;
+                const birthUser = data.user.birth
+                const formattedDate = birthUser.split('T')[0];
+                const inforUser = `
+                    <table>
+                        <tr>
+                            <td class="col_left col-4">Tên đăng nhập</td>
+                            <td class="col-8 col_right">
+                                <div class="input_acc">
+                                    <input type="text" name="account" value="${data.user.account}" disabled>
+                                    <div class="mt-2">Không thể thay đổi tài khoản</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col_left col-4">Họ & Tên</td>
+                            <td class="col-8 col_right">
+                                <div class="input_acc">
+                                    <input type="text" name="name" value="${data.user.name}">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col_left col-4">Email</td>
+                            <td class="col-8 col_right">
+                                <div class="input_acc">
+                                    <input type="text" name="email" value="${data.user.email}">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col_left col-4">Số điện thoại</td>
+                            <td class="col-8 col_right">
+                                <div class="input_acc">
+                                    <input type="text" name="phone" value="${data.user.phone}">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col_left col-4">Ngày sinh</td>
+                            <td class="col-8 col_right">
+                                <div class="input_acc">
+                                    <input type="date" name="birth" value="${formattedDate}">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col_left col-4"> </td>
+                            <td class="col-8 col_right">
+                                <button type="submit" class="btn_save_profile">Lưu</button>
+                            </td>
+                        </tr>
+                    </table>`;
+                document.querySelector('#form_infor_user').innerHTML = inforUser;
+                console.log(data.user.birth);
+            } else {
+                document.querySelector('#avatar_user').src = 
+                'https://www.dropbox.com/scl/fi/896n7adhufqiu2hlt94u5/default.png?rlkey=gk9thmq6u1grzss8o0c3os39f&st=49r87xjx&dl=1';
+                const html = `
+                    <div class="guest_user">
+                        <img src="${defaultAvatar}" alt="Ảnh đại diện">
+                        <h5>Khách</h5>
+                    </div>
+                    <div class="deliver"></div>
+                    <div class="auth_buttons">
+                        <button class="button_login is-center" onclick="redirectToLogin()">
+                            <i class="bi bi-box-arrow-in-right"></i> Đăng nhập
+                        </button>
+                        <button class="button_register is-center" onclick="redirectToRegister()">
+                            <i class="bi bi-person-plus"></i> Đăng ký
+                        </button>
+                    </div>`;
+                document.querySelector('.model_user_menu').innerHTML = html;
+            }
 
+        }catch(err){
+            console.error("Lỗi kiểm tra đăng nhập:", err);
+        }        
+    }
+    userSession();
     function tabActive() {
         const currentPath = window.location.pathname;
         

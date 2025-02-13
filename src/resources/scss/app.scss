@@ -331,6 +331,60 @@ ul,li{
 .model_image.active{
     transform: translateY(0);
 }
+.model_login{
+    transform: translateY(0);
+    display: none;
+    background: rgba(83, 83, 83, 0.233);
+    .wrapper_login{
+        width: 500px;
+        max-width: 95%;
+        height: 500px;
+        max-height: 95%;
+        background: white;
+        border-radius: 8px;
+        box-shadow: rgba(0, 0, 0, 0.075) 0px 0.125rem 0.25rem;
+        flex-direction: column;
+        gap: 20px;
+        padding: 50px 0;
+        h5{
+            font-size: 35px;
+            text-transform: uppercase;
+            color: var(--color-main);
+            font-weight: 600;
+        }
+        .form_contact{
+            margin-top: 30px;
+            height: auto;
+            li{
+                margin: 0 0 25px;
+            }
+            li:last-child(){
+                margin: 0;
+            }
+        }
+        .forgot{
+            width: 90%;
+            padding: 0 20px;
+            margin-top: -35px;
+            h6{
+                font-size: 14px;
+                color: rgba(65, 114, 248, 0.959);
+                cursor: pointer;
+            }
+        }
+        h4{
+            font-size: 16px;
+            margin-top: 40px;
+            color: #888888be;
+            cursor: default;
+            span{
+                font-size: 17px;
+                color: var(--color-main);
+                cursor: pointer;
+            }
+        }
+    }
+}
 .circle{
     width: 40px;
     height: 40px;
@@ -1546,49 +1600,7 @@ ul,li{
             margin: 0;
             margin-top: 20px;
         }
-        .form_contact{
-            width: 100%;
-            background: #fff;
-            height: 390px;
-            ul{
-                width: 100%;
-                padding: 20px 20px 5px;
-                li{
-                    position: relative;
-                    width: 100%;
-                    margin: 0 0 14px;
-                    display: flex;
-                    min-height: auto;
-                    line-height: 40px;
-                    input{
-                        border: 1px solid #eee;
-                        border-left: 3px solid #013e5a;
-                        height: 39px;
-                        padding: 0 10px;
-                        font-family: Arial, Helvetica, sans-serif;
-                        font-size: 13px;
-                        position: relative;
-                        width: 100%;
-                    }
-                    .submit{
-                        border: none;
-                        background: var(--color-main);
-                        color: #fff;
-                        font-size: 15px;
-                    }
-                    textarea{
-                        height: 95px;
-                        padding: 10px;
-                        resize: none;
-                        border: 1px solid #eee;
-                        border-left: 3px solid #013e5a;
-                        font-family: Arial, Helvetica, sans-serif;
-                        font-size: 13px;
-                        width: 100%;
-                    }
-                }
-            }
-        }
+        
         .infor_list{
             width: 100%;
             display: flex;
@@ -2518,6 +2530,49 @@ h3{
         align-items: flex-start;
         border-bottom: 1px solid rgba(0, 0, 0, .09);
         padding: 1rem 0 1rem 1.25rem;
+    }
+}
+.form_contact{
+    width: 100%;
+    background: #fff;
+    height: 390px;
+    ul{
+        width: 100%;
+        padding: 20px 20px 5px;
+        li{
+            position: relative;
+            width: 100%;
+            margin: 0 0 14px;
+            display: flex;
+            min-height: auto;
+            line-height: 40px;
+            input{
+                border: 1px solid #eee;
+                border-left: 3px solid #013e5a;
+                height: 39px;
+                padding: 0 10px;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 13px;
+                position: relative;
+                width: 100%;
+            }
+            .submit{
+                border: none;
+                background: var(--color-main);
+                color: #fff;
+                font-size: 15px;
+            }
+            textarea{
+                height: 95px;
+                padding: 10px;
+                resize: none;
+                border: 1px solid #eee;
+                border-left: 3px solid #013e5a;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 13px;
+                width: 100%;
+            }
+        }
     }
 }
 .detail_comments{
